@@ -1,1 +1,3 @@
-Go fuck yourself (pls)
+# Crypto wallet educational project
+
+No purpose, just practiсing
