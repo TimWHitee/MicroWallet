@@ -1,3 +1,3 @@
-# Crypto wallet educational project
+# Crypto wallet non-educational project
 
-No purpose, just practiсing
+real purpose, just practiсing
