@@ -29,6 +29,6 @@ def generate_entropy(length: int) -> str:
     return ENT
 
 # Пример использования
-
-print(generate_entropy(128))
-print(generate_entropy(256))
+if __name__ == '__main__':
+    print(generate_entropy(128))
+    print(generate_entropy(256))

@@ -114,10 +114,10 @@ def generate_mnemonic_12(entropy):
 
 
 # Пример использования
+if __name__ == '__main__':
+    entropy_256 = "CB6BE962FCD00B25012500F14D8525018FD81AA0D097194F1887F7F16B18AE22"
 
-entropy_256 = "CB6BE962FCD00B25012500F14D8525018FD81AA0D097194F1887F7F16B18AE22"
+    entropy_128 = "b861e4cc661e243ece4ce427a07e7538"
 
-entropy_128 = "b861e4cc661e243ece4ce427a07e7538"
-
-print(f"mnemonic 24-words : {generate_mnemonic_24(entropy_256)}")
-print(f"mnemonic 12-words : {generate_mnemonic_12(entropy_128)}")
+    print(f"mnemonic 24-words : {generate_mnemonic_24(entropy_256)}")
+    print(f"mnemonic 12-words : {generate_mnemonic_12(entropy_128)}")

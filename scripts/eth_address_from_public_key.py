@@ -37,7 +37,7 @@ def get_ethereum_address(public_key: str) -> str:
     return address
 
 # Пример использования:
-
-public_key_hex = '0x03b00121276ae5d77bb7d62e8eea8fedd7ec1db051bf7921c984380cf4a1bb9a95'
-address = get_ethereum_address(public_key_hex)
-print(f"Ethereum-адрес: {address}")
+if __name__ == '__main__':
+    public_key_hex = '0x03b00121276ae5d77bb7d62e8eea8fedd7ec1db051bf7921c984380cf4a1bb9a95'
+    address = get_ethereum_address(public_key_hex)
+    print(f"Ethereum-адрес: {address}")
