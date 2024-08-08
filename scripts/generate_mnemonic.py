@@ -2,41 +2,104 @@ import hashlib
 
 
 """
+Мнемоническая фраза из 24 слов
 
 Функция генерирует seed-phrase (mnemonic) из переданной энтропии (256 бит) по стандарту BIP39
 
 """
-def generate_mnemonic(entropy):
+def generate_mnemonic_24(entropy):
+    # Проверка длины энтропии (должна быть 64 символа для 256 бит)
+    if len(entropy) != 64:
+        raise ValueError("Entropy should be 64 hexadecimal characters (256 bits) long")
+    
+    # Проверка на то, что строка содержит только шестнадцатеричные символы
+    try:
+        bytes.fromhex(entropy)
+    except ValueError:
+        raise ValueError("Entropy should contain only hexadecimal characters")
 
-    # Хэшируется энтропия для получения контрольной суммы 
+    # Хэширование энтропии для получения контрольной суммы
     priv_hashed = hashlib.sha256(bytes.fromhex(entropy)).digest().hex()
 
-    # Контрольная сумма - первые 8 бит (2 символа) хэша энтропии 
-    CS = priv_hashed[:2]
+    # Контрольная сумма - первые 8 бит (1 байт) хэша энтропии в 256 бит
+    CS = bin(int(priv_hashed, 16))[2:].zfill(256)[:8]
 
-    # новая строка - энтропия с добавлением чексум в конец
-    CString = entropy + CS
+    # Новая строка - энтропия с добавлением контрольной суммы в конец
+    entropy_bits = bin(int(entropy, 16))[2:].zfill(256) + CS
 
-    # полное бинарное представление
-    binary = ''.join(format(byte, '08b') for byte in bytes.fromhex(CString))
+    # Полное бинарное представление
+    binary = entropy_bits
 
-    # массив индексов в бинарном виде(каждые 11 битов, тк 2^11 = 2048 - кол-во слов в BIP39)
+    # Массив индексов в бинарном виде (каждые 11 битов, т.к. 2^11 = 2048 - кол-во слов в BIP39)
     binary_indices = [binary[i*11:(i+1) * 11] for i in range(24)]
 
-    # тот же массив, но в десятичном виде
-    indices = [int(i,2) for i in binary_indices]
+    # Тот же массив, но в десятичном виде
+    indices = [int(i, 2) for i in binary_indices]
 
-    # распаковка списка всех слов из BIP39
+    # Распаковка списка всех слов из BIP39
     with open('BIPS/bip39.txt') as file:
-        data = []
-        for i in range(2048):
-            data.append(file.readline().strip())
+        data = [line.strip() for line in file.readlines()]
 
-    # составление мнемонической фразы по индексам 
+    # Проверка количества слов в файле (должно быть 2048)
+    if len(data) != 2048:
+        raise ValueError("The bip39 word list should contain exactly 2048 words")
+
+    # Составление мнемонической фразы по индексам
     mnemonic = [data[i] for i in indices]
 
     return mnemonic
-# пример использования
-entropy = "CB6BE962FCD00B25012500F14D8525018FD81AA0D097194F1887F7F16B18AE22"
-print(generate_mnemonic(entropy))
+
+
+
+"""
+Мнемоническая фраза из 12 слов
+
+Функция генерирует seed-phrase (mnemonic) из переданной энтропии (128 бит) по стандарту BIP39
+
+"""
+def generate_mnemonic_12(entropy):
+    # Проверка длины энтропии (должна быть 32 символа для 128 бит)
+    if len(entropy) != 32:
+        raise ValueError("Entropy should be 32 hexadecimal characters (128 bits) long")
+
+    # Хэширование энтропии для получения контрольной суммы 
+    priv_hashed = hashlib.sha256(bytes.fromhex(entropy)).digest().hex()
+
+    # Контрольная сумма - первые 4 бита (полбайта) хэша энтропии в 128 бит
+    CS = bin(int(priv_hashed, 16))[2:].zfill(256)[:4]
+
+    # Новая строка - энтропия с добавлением контрольной суммы в конец
+    entropy_bits = bin(int(entropy, 16))[2:].zfill(128) + CS
+
+    # Полное бинарное представление
+    binary = entropy_bits
+
+    # Массив индексов в бинарном виде (каждые 11 битов, т.к. 2^11 = 2048 - кол-во слов в BIP39)
+    binary_indices = [binary[i*11:(i+1) * 11] for i in range(12)]
+
+    # Тот же массив, но в десятичном виде
+    indices = [int(i, 2) for i in binary_indices]
+
+    # Распаковка списка всех слов из BIP39
+    with open('BIPS/bip39.txt') as file:
+        data = [line.strip() for line in file.readlines()]
+
+    # Проверка количества слов в файле (должно быть 2048)
+    if len(data) != 2048:
+        raise ValueError("The bip39 word list should contain exactly 2048 words")
+
+    # Составление мнемонической фразы по индексам
+    mnemonic = [data[i] for i in indices]
+
+    return mnemonic
+
+
+# Пример использования
+
+entropy_256 = "CB6BE962FCD00B25012500F14D8525018FD81AA0D097194F1887F7F16B18AE22"
+
+entropy_128 = "b861e4cc661e243ece4ce427a07e7538"
+
+print(f"mnemonic 24-words : {generate_mnemonic_24(entropy_256)}")
+print(f"mnemonic 12-words : {generate_mnemonic_12(entropy_128)}")
 
