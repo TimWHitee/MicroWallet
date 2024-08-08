@@ -1,5 +1,6 @@
 from mnemonic import Mnemonic
-from bip_utils import Bip39SeedGenerator, Bip44, Bip44Coins, Bip44Changes
+from bip_utils import Bip44, Bip44Coins, Bip44Changes
+from mnemonic_to_seed import to_seed
 
 def generate_addresses(mnemonic_phrase: str, num_addresses: int):
     """
@@ -17,8 +18,7 @@ def generate_addresses(mnemonic_phrase: str, num_addresses: int):
         raise ValueError("Мнемоника некорректна")
 
     # Создаем seed из мнемоники
-    seed_bytes = Bip39SeedGenerator(mnemonic_phrase).Generate()
-
+    seed_bytes = to_seed(mnemonic_phrase)
     # Инициализируем Bip44 для Ethereum
     bip44_mst = Bip44.FromSeed(seed_bytes, Bip44Coins.ETHEREUM)
 
@@ -43,17 +43,18 @@ def generate_addresses(mnemonic_phrase: str, num_addresses: int):
 
 # Пример использования:
 
-# Ваша мнемоническая фраза
-mnemonic_phrase = 'tunnel snap pole engine conduct oval outdoor cash chest thrive dawn crime'
+if __name__ == '__main__':
+    # Ваша мнемоническая фраза
+    mnemonic_phrase = 'tunnel snap pole engine conduct oval outdoor cash chest thrive dawn crime'
 
-# Количество адресов для генерации
-num_addresses = 30
+    # Количество адресов для генерации
+    num_addresses = 1
 
-addresses = generate_addresses(mnemonic_phrase, num_addresses)
+    addresses = generate_addresses(mnemonic_phrase, num_addresses)
 
-# Вывод результатов
-for i, addr in enumerate(addresses):
-    print(f"Адрес {i}: {addr['address']}")
-    print(f"Приватный ключ {i}: 0x{addr['private_key']}")
-    print(f"Публичный ключ {i}: 0x{addr['public_key']}")
-    print('--------------------------------')
+    # Вывод результатов
+    for i, addr in enumerate(addresses):
+        print(f"Адрес {i}: {addr['address']}")
+        print(f"Приватный ключ {i}: 0x{addr['private_key']}")
+        print(f"Публичный ключ {i}: 0x{addr['public_key']}")
+        print('--------------------------------')
