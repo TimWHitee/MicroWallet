@@ -27,10 +27,10 @@ def to_seed(mnemonic: str, passphrase: str = "") -> bytes:
         "sha512", mnemonic_bytes, passphrase_bytes, PBKDF2_ROUNDS
     )
 
-    return stretched[:64]  # Возвращаем первые 64 байта (512 бит)
+    return stretched[:64].hex()  # Возвращаем первые 64 байта (512 бит)
 
 # Пример использования
 if __name__ == "__main__":
     mnemonic_phrase = "tunnel snap pole engine conduct oval outdoor cash chest thrive dawn crime"
     seed = to_seed(mnemonic_phrase)
-    print(f"Seed: {seed.hex()}")
+    print(f"Seed: {seed}")
