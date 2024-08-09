@@ -1,6 +1,6 @@
 from mnemonic import Mnemonic
 from bip_utils import Bip44, Bip44Coins, Bip44Changes
-from mnemonic_to_seed import to_seed
+from .mnemonic_to_seed import to_seed
 
 def generate_addresses(mnemonic_phrase: str, num_addresses: int):
     """

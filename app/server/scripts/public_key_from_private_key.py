@@ -17,10 +17,10 @@ def prvk_to_pubk(private_key_hex: str) -> str:
     public_key_compressed = signing_key.get_verifying_key().to_string('compressed')
     public_key_compressed_hex = public_key_compressed.hex()
     
-    return public_key_compressed_hex
+    return f'0x{public_key_compressed_hex}'
 
 # Пример использования:
 if __name__ == '__main__':
     private_key_hex = '0x84202574aaf833aaf564641d6fe42736dfb8916c569f39947bdee3b048023997'
     compressed_key = prvk_to_pubk(private_key_hex)
-    print(f"Сжатый публичный ключ: 0x{compressed_key}")
+    print(f"Сжатый публичный ключ: {compressed_key}")
