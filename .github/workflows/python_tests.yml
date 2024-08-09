@@ -22,6 +22,14 @@ jobs:
         with:
           python-version: "3.10"
 
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            echo "requirements.txt not found."
+          fi
+
       - name: Run tests
         id: test
         run: |
