@@ -38,6 +38,6 @@ def get_ethereum_address(public_key: str) -> str:
 
 # Пример использования:
 if __name__ == '__main__':
-    public_key_hex = '0x03b00121276ae5d77bb7d62e8eea8fedd7ec1db051bf7921c984380cf4a1bb9a95'
+    public_key_hex = '0x028f2081119bc5f056cdd4b5b1212eb4849bb5cddb528aa8b413f591e47e57f35b'
     address = get_ethereum_address(public_key_hex)
     print(f"Ethereum-адрес: {address}")

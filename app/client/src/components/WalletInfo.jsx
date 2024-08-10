@@ -1,7 +1,19 @@
-// src/components/WalletInfo.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const WalletInfo = ({ walletData }) => {
+const WalletInfo = () => {
+  const [walletData, setWalletData] = useState(null);
+
+  useEffect(() => {
+    const data = localStorage.getItem("walletData");
+    if (data) {
+      setWalletData(JSON.parse(data));
+    }
+  }, []);
+
+  if (!walletData) {
+    return <p>No wallet information available.</p>;
+  }
+
   return (
     <div>
       <h2>Wallet Details</h2>

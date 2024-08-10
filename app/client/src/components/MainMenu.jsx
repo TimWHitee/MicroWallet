@@ -1,14 +1,14 @@
-// src/components/MainMenu.jsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import './MainMenu.css'; 
+import { useWallet } from '../WalletContext'; // Импортируйте хук
 
-function MainMenu({ setWalletData }) {
+function MainMenu() {
+  const { setWalletData } = useWallet(); // Получите функцию установки данных о кошельке
   const [walletName, setWalletName] = useState("");
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
   const handleCreateWallet = async () => {
+    localStorage.removeItem("walletData"); // Clear existing wallet data
     setError(null); // Сброс ошибки
     try {
       const response = await fetch("http://localhost:8000/create_wallet/", {
@@ -18,12 +18,15 @@ function MainMenu({ setWalletData }) {
         },
         body: JSON.stringify({ words_in_mnemo: 24 }), // Укажите желаемое количество слов
       });
-
+  
       const data = await response.json();
-
+  
       if (response.ok) {
         setWalletData(data); // Успешное создание кошелька
-        navigate("/wallet-info"); // Перенаправление на страницу информации о кошельке
+        localStorage.setItem("walletData", JSON.stringify(data)); // Сохранение данных в localStorage
+        alert(`Wallet created! Address: ${data.address}`);
+        // Перенаправление на страницу с информацией о кошельке
+        window.location.href = "/wallet-info";
       } else {
         setError(data.detail); // Обработка ошибки
       }

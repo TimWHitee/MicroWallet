@@ -21,13 +21,13 @@ def create_wallet(words_in_mnemo: int = 24):
 
     str_mnemonic = " ".join(mnemonic)
 
-    seed = to_seed(str_mnemonic)
+    seed = to_seed(str_mnemonic).hex()
 
     address_data = generate_addresses(mnemonic_phrase=str_mnemonic,num_addresses=1)
 
-    private_key = address_data[0]['private_key']
+    private_key = '0x' + address_data[0]['private_key']
 
-    public_key = address_data[0]['public_key']
+    public_key = '0x' + address_data[0]['public_key']
 
     address = address_data[0]['address']
 

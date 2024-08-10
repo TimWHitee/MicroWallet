@@ -21,7 +21,6 @@ def generate_addresses(mnemonic_phrase: str, num_addresses: int):
     seed_bytes = to_seed(mnemonic_phrase)
     # Инициализируем Bip44 для Ethereum
     bip44_mst = Bip44.FromSeed(seed_bytes, Bip44Coins.ETHEREUM)
-
     # Список для хранения результатов
     addresses = []
 
@@ -45,10 +44,10 @@ def generate_addresses(mnemonic_phrase: str, num_addresses: int):
 
 if __name__ == '__main__':
     # Ваша мнемоническая фраза
-    mnemonic_phrase = 'tunnel snap pole engine conduct oval outdoor cash chest thrive dawn crime'
+    mnemonic_phrase = 'topic wear estate donkey impulse october open helmet father payment exotic wasp toddler acquire wool talent country lens valley pipe depart picnic seek hard'
 
     # Количество адресов для генерации
-    num_addresses = 1
+    num_addresses = 3
 
     addresses = generate_addresses(mnemonic_phrase, num_addresses)
 

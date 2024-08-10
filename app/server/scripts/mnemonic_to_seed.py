@@ -27,7 +27,7 @@ def to_seed(mnemonic: str, passphrase: str = "") -> bytes:
         "sha512", mnemonic_bytes, passphrase_bytes, PBKDF2_ROUNDS
     )
 
-    return stretched[:64].hex()  # Возвращаем первые 64 байта (512 бит)
+    return stretched[:64]  # Возвращаем первые 64 байта (512 бит)
 
 # Пример использования
 if __name__ == "__main__":

@@ -21,6 +21,6 @@ def prvk_to_pubk(private_key_hex: str) -> str:
 
 # Пример использования:
 if __name__ == '__main__':
-    private_key_hex = '0x84202574aaf833aaf564641d6fe42736dfb8916c569f39947bdee3b048023997'
+    private_key_hex = '0xa812114a89585bc650d9baf40bfe8248315fedcadc2e95e99363f87668c022cf'
     compressed_key = prvk_to_pubk(private_key_hex)
     print(f"Сжатый публичный ключ: {compressed_key}")
