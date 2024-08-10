@@ -1,7 +1,7 @@
 import random 
 import hashlib
 import time
-
+import math
 # TODO: сделать более рандомную генерацию :) 
 
 def generate_entropy(length: int) -> str:
@@ -16,8 +16,13 @@ def generate_entropy(length: int) -> str:
     if length not in [128, 256]:
         raise ValueError("Length must be either 128 or 256 bits")
 
-    # Генерация случайной энтропии
-    ENT = str(random.randint(0, 2**20)) + str(time.time())
+
+    with open('BIPS/bip39.txt') as file:
+            data = [line.strip() for line in file.readlines()]
+
+    random_indices = [random.randint(0,2047) for _ in range(24)]
+    random_words = [data[i] for i in random_indices]
+    ENT = str(random.randint(0, 2**20)) + str(time.time()*math.pi*math.e) + ''.join(random_words)
     ENT = hashlib.sha256(ENT.encode('utf-8')).hexdigest()
 
     # Обрезка до нужной длины
