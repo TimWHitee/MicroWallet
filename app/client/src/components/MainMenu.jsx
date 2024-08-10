@@ -24,7 +24,7 @@ function MainMenu() {
       if (response.ok) {
         setWalletData(data); // Успешное создание кошелька
         localStorage.setItem("walletData", JSON.stringify(data)); // Сохранение данных в localStorage
-        alert(`Wallet created! Address: ${data.address}`);
+        // alert(`Wallet created! Address: ${data.address}`);
         // Перенаправление на страницу с информацией о кошельке
         window.location.href = "/wallet-info";
       } else {
@@ -39,12 +39,7 @@ function MainMenu() {
   return (
     <div className="main-menu">
       <h1>Welcome to MicroWallet</h1>
-      <input
-        type="text"
-        placeholder="Enter wallet name"
-        value={walletName}
-        onChange={(e) => setWalletName(e.target.value)}
-      />
+
       <button onClick={handleCreateWallet}>Create Wallet</button>
       <button>Import Wallet</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}

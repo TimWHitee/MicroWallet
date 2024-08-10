@@ -1,0 +1,60 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(to top, #e0f7fa, #f4f7fa); /* Светлый градиент */
+    margin: 100px;
+    padding: 100px;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    height: 100vh;
+  }
+  
+  .container {
+    background: white; /* Белый фон для контейнера */
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    padding: 30px;
+    max-width: 450px;
+    width: 100%;
+    text-align: center; /* Центрируем текст в контейнере */
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .container:hover {
+    transform: translateY(-5px); /* Поднимаем контейнер при наведении */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  h2 {
+    color: #2c3e50; /* Темно-синий цвет для заголовка */
+    font-size: 2rem;
+    margin: 10px; /* Убираем отступы */
+    padding: 10px 0; /* Добавляем небольшой отступ сверху и снизу */
+    letter-spacing: 1px; /* Пробел между буквами */
+    font-weight: 600; /* Жирный шрифт для заголовка */
+  }
+  
+  p {
+    color: #34495e; /* Темно-синий цвет для текста */
+    font-size: 1.1rem;
+    margin: 15px 0;
+    transition: color 0.3s; /* Плавное изменение цвета */
+  }
+  
+  p:hover {
+    color: #2980b9; /* Синий цвет при наведении */
+  }
+  
+  .info-block {
+    background: #ecf0f1; /* Светло-серый фон для информации */
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Легкая тень для блока информации */
+    transition: background 0.3s; /* Плавное изменение фона */
+  }
+  
+  .info-block:hover {
+    background: #bdc3c7; /* Более темный фон при наведении */
+  }
+  
