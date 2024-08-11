@@ -52,7 +52,7 @@ class TestWalletFunctions(unittest.TestCase):
     def test_convert_mnemonic_to_seed(self):
         mnemonic = generate_mnemonic_12(entropy=generate_entropy(128))
         seed = to_seed(' '.join(mnemonic))
-        self.assertIsInstance(seed, str)
+        self.assertIsInstance(seed.hex(), str)
         self.assertTrue(len(seed) > 0)
 
     def test_private_key_to_public_key(self):
