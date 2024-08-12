@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import sys,os
+from .v1 import *
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 
 from app.server.scripts import create_wallet
@@ -29,6 +30,10 @@ class WalletResponse(BaseModel):
     seed: str
     entropy: str
 
+class BalanceResponse(BaseModel):
+    balance_eth: float
+    balance_usd: float
+
 @app.post("/create_wallet/", response_model=WalletResponse)
 async def create_wallet_endpoint(words_in_mnemo: int = 24):
     try:
@@ -36,12 +41,20 @@ async def create_wallet_endpoint(words_in_mnemo: int = 24):
         return wallet_data
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
+    
+@app.get("/check_balance/{address}", response_model=BalanceResponse)
+async def check_balance(address: str):
+    """
+    Проверяет баланс по Ethereum адресу и возвращает его в ETH и USD.
+    """
+    balance = get_eth_balance(address=address)
 
-@app.get("/api", response_model=str)
+    return BalanceResponse(balance_eth=balance['balance_eth'], balance_usd=balance['balance_usd'])
+
+@app.get("/", response_model=str)
 async def start():
     return 'Alive!'
 
 
-# if __name__ == "__main__":
-#     print(create_wallet())
+
 # uvicorn app.server.main:app --reload

@@ -1,5 +1,5 @@
 from web3 import Web3
-from get_eth_price import get_eth_price
+from .get_eth_price import get_eth_price
 
 def get_eth_balance(address, rpc_url='https://cloudflare-eth.com'):
     """
