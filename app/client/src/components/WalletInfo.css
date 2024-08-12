@@ -2,7 +2,7 @@
   background-color: #ffffff;
   border-radius: 16px; /* Увеличили радиус скругления */
   padding: 20px; /* Увеличили отступы */
-  width: 600px;
+  width: 750px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Увеличили тень */
   max-width: 850px; /* Увеличили максимальную ширину */
   /* margin: 30px auto; Увеличили отступы сверху и снизу */
@@ -32,22 +32,26 @@
   justify-content: space-between;
   padding: 15px 0; /* Увеличили отступы */
   border-bottom: 1px solid #e0e0e0;
+  
 }
 
 .wallet-detail:last-child {
   border-bottom: none; /* Убираем нижнюю границу для последнего элемента */
+  
 }
 
 .label {
   font-weight: bold;
   color: #555;
   font-size: 1.2em; /* Увеличили размер шрифта для меток */
+  
 }
 
 .value {
   color: #333;
   overflow-wrap: break-word; /* Обеспечивает перенос длинного текста */
   font-size: 1.2em; /* Увеличили размер шрифта для значений */
+  text-align: center;
 }
 
 .error {
@@ -78,16 +82,19 @@
 
 
 .check-balance {
+  position: fixed; /* Закрепляем элемент */
+  top: 100px; /* Отступ сверху */
+  left: 100px; /* Отступ слева */
   background-color: #f9f9f9; /* Светлый фон для информации о балансе */
   border-radius: 16px; /* Скругление углов */
-  padding: 20px; /* Отступы вокруг */
-  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); Тень для выделения */
-  margin: 20px 0; /* Отступ сверху и снизу */
+  padding: 20px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+  width: 300px; /* Ширина элемента */
   text-align: center; /* Центрируем текст */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
   transition: transform 0.2s; /* Плавный переход для эффекта наведения */
+  z-index: 10; /* Устанавливаем уровень наложения, чтобы элемент был поверх других */
 }
-
 
 
 .balance-info {
@@ -99,6 +106,8 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
   border: 1px solid #e0e0e0; /* Легкая граница */
 }
+
+
 
 .balance-info p {
   font-size: 1.5em; /* Увеличенный размер шрифта для значений */
