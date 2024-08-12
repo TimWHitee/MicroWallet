@@ -1,17 +1,19 @@
 .wallet-info {
   background-color: #ffffff;
   border-radius: 16px; /* Увеличили радиус скругления */
-  padding: 40px; /* Увеличили отступы */
+  padding: 20px; /* Увеличили отступы */
+  width: 600px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Увеличили тень */
   max-width: 850px; /* Увеличили максимальную ширину */
-  margin: 30px auto; /* Увеличили отступы сверху и снизу */
+  /* margin: 30px auto; Увеличили отступы сверху и снизу */
+  margin-left: 800px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   position: relative; /* Для размещения заголовка */
   margin-top: 100px;
 }
 
 .wallet-info h2 {
-  margin: 0 0 25px; /* Увеличили отступ снизу */
+  margin: 0 0 25px;
   color: #333;
   font-size: 2em; /* Увеличили размер шрифта заголовка */
   text-align: center;
@@ -72,3 +74,41 @@
 .toggle-button:hover {
   background-color: #0056b3; /* Цвет фона при наведении */
 }
+
+
+
+.check-balance {
+  background-color: #f9f9f9; /* Светлый фон для информации о балансе */
+  border-radius: 16px; /* Скругление углов */
+  padding: 20px; /* Отступы вокруг */
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); Тень для выделения */
+  margin: 20px 0; /* Отступ сверху и снизу */
+  text-align: center; /* Центрируем текст */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
+  transition: transform 0.2s; /* Плавный переход для эффекта наведения */
+}
+
+
+
+.balance-info {
+  background-color: #ffffff; /* Белый фон для информации о балансе */
+  border-radius: 12px; /* Скругление углов */
+  padding: 15px; /* Отступы вокруг */
+  margin: 10px 0; /* Отступ сверху и снизу */
+  text-align: center; /* Центрируем текст */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
+  border: 1px solid #e0e0e0; /* Легкая граница */
+}
+
+.balance-info p {
+  font-size: 1.5em; /* Увеличенный размер шрифта для значений */
+  color: #333; /* Цвет текста */
+  margin: 5px 0; /* Отступы между параграфами */
+}
+
+.error-message {
+  color: red; /* Цвет для ошибок */
+  margin: 10px 0; /* Отступ сверху и снизу */
+  font-size: 1.2em; /* Увеличенный размер шрифта для ошибок */
+}
+
