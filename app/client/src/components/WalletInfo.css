@@ -1,3 +1,11 @@
+/* Общий контейнер для размещения компонентов */
+.app {
+  display: flex; /* Используем flexbox для размещения элементов */
+  align-items: flex-start; /* Выравниваем по верхнему краю */
+  margin-top: 50px; /* Отступ сверху для всей страницы */
+}
+
+/* Стили для WalletInfo */
 .wallet-info {
   background-color: #ffffff;
   border-radius: 16px; /* Увеличили радиус скругления */
@@ -5,13 +13,13 @@
   width: 750px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Увеличили тень */
   max-width: 850px; /* Увеличили максимальную ширину */
-  /* margin: 30px auto; Увеличили отступы сверху и снизу */
-  margin-left: 800px;
+  margin-right: 20px; /* Отступ справа для пространства между элементами */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   position: relative; /* Для размещения заголовка */
-  margin-top: 100px;
+  margin-left: 20px;
 }
 
+/* Заголовок внутри WalletInfo */
 .wallet-info h2 {
   margin: 0 0 25px;
   color: #333;
@@ -27,24 +35,22 @@
   border-radius: 8px; /* Скругляем углы фона заголовка */
 }
 
+/* Детали кошелька */
 .wallet-detail {
   display: flex;
   justify-content: space-between;
   padding: 15px 0; /* Увеличили отступы */
   border-bottom: 1px solid #e0e0e0;
-  
 }
 
 .wallet-detail:last-child {
   border-bottom: none; /* Убираем нижнюю границу для последнего элемента */
-  
 }
 
 .label {
   font-weight: bold;
   color: #555;
   font-size: 1.2em; /* Увеличили размер шрифта для меток */
-  
 }
 
 .value {
@@ -79,12 +85,8 @@
   background-color: #0056b3; /* Цвет фона при наведении */
 }
 
-
-
+/* Стили для CheckBalance */
 .check-balance {
-  position: fixed; /* Закрепляем элемент */
-  top: 100px; /* Отступ сверху */
-  left: 100px; /* Отступ слева */
   background-color: #f9f9f9; /* Светлый фон для информации о балансе */
   border-radius: 16px; /* Скругление углов */
   padding: 20px; 
@@ -92,11 +94,10 @@
   width: 300px; /* Ширина элемента */
   text-align: center; /* Центрируем текст */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
-  transition: transform 0.2s; /* Плавный переход для эффекта наведения */
-  z-index: 10; /* Устанавливаем уровень наложения, чтобы элемент был поверх других */
+  position: relative; /* Позиционирование относительно общего контейнера */
 }
 
-
+/* Стили для информации о балансе */
 .balance-info {
   background-color: #ffffff; /* Белый фон для информации о балансе */
   border-radius: 12px; /* Скругление углов */
@@ -106,8 +107,6 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
   border: 1px solid #e0e0e0; /* Легкая граница */
 }
-
-
 
 .balance-info p {
   font-size: 1.5em; /* Увеличенный размер шрифта для значений */
@@ -120,4 +119,3 @@
   margin: 10px 0; /* Отступ сверху и снизу */
   font-size: 1.2em; /* Увеличенный размер шрифта для ошибок */
 }
-
