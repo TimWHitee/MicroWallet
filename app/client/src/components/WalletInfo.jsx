@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from "react";
 import './WalletInfo.css'; // Убедитесь, что файл стилей импортирован
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCopy, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const WalletInfo = ({ walletData }) => {
     const [isVisible, setIsVisible] = useState(false); // Состояние для управления видимостью полей
+    const [isCopied, setIsCopied] = useState(false); // Состояние для отслеживания копирования адреса
 
+    const copyToClipboard = (text) => {
+      navigator.clipboard.writeText(text).then(() => {
+          setIsCopied(true); // Устанавливаем состояние скопированного адреса
+          setTimeout(() => setIsCopied(false), 2000); // Сбрасываем состояние через 2 секунды
+      }).catch((error) => {
+          console.error("Ошибка при копировании адреса:", error);
+      });
+  };
     const toggleVisibility = () => {
         setIsVisible((prev) => !prev); // Переключаем видимость
     };
@@ -18,7 +29,14 @@ const WalletInfo = ({ walletData }) => {
             <h2>Wallet Details</h2>
             <div className="wallet-detail">
                 <span className="label">Address:</span>
-                <span className="value">{walletData.address}</span>
+                <span className="value">
+                    {walletData.address}
+                    <FontAwesomeIcon 
+                        icon={isCopied ? faCheck : faCopy} // Меняем значок в зависимости от состояния
+                        style={{ marginLeft: '10px', cursor: 'pointer', color: isCopied ? 'green' : 'black' }} 
+                        onClick={() => copyToClipboard(walletData.address)} 
+                    />
+                </span>
             </div>
             {isVisible && (
                 <>
@@ -52,7 +70,7 @@ const CheckBalance = ({ address }) => {
           if (address) {
               setError(null); // Сбрасываем ошибки перед новым запросом
               try {
-                  // let address = '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe'; // FIXME: Временная штука - убрать 
+                  let address = '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe'; // FIXME: Временная штука - убрать 
                   const response = await axios.get(`http://localhost:8000/check_balance/${address}`);
                   setBalance(response.data);
               } catch (error) {
