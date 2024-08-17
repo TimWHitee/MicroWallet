@@ -39,6 +39,7 @@ class TestWalletFunctions(unittest.TestCase):
         self.assertIn('public_key', wallet)
         self.assertIn('address', wallet)
         self.assertIn('entropy', wallet)
+        self.assertEqual(wallet['mnemonic'],generate_mnemonic_24(entropy=wallet['entropy']))
 
     def test_generate_addresses(self):
         mnemonic = generate_mnemonic_12(entropy=generate_entropy(128))
@@ -70,6 +71,7 @@ class TestWalletFunctions(unittest.TestCase):
         self.assertIsInstance(ethereum_address, str)
         self.assertTrue(ethereum_address.startswith('0x'))
         self.assertEqual(len(ethereum_address), 42)
+        self.assertEqual(get_ethereum_address('0x028f2081119bc5f056cdd4b5b1212eb4849bb5cddb528aa8b413f591e47e57f35b'),'0xbc307bf58702e2d4a3fc397c876bd50f1fdf540b')
 
 if __name__ == '__main__':
     unittest.main()

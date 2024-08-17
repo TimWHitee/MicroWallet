@@ -1,4 +1,7 @@
-import sha3
+from Crypto.Hash import keccak
+import binascii
+
+
 from ecdsa import VerifyingKey, SECP256k1 
 # pip install ecdsa pysha3
 
@@ -28,16 +31,15 @@ def get_ethereum_address(public_key: str) -> str:
     uncompressed_public_key = verifying_key.to_string()
     
     # Применяем хэш Keccak256
-    k = sha3.keccak_256()
-    k.update(uncompressed_public_key)
-    keccak_hash = k.digest()
+
+    keccak256 = keccak.new(data=uncompressed_public_key, digest_bits=256).digest()
     
     # Получаем последние 20 байт хэша
-    address = '0x' + keccak_hash[-20:].hex()
+    address = '0x' + keccak256[-20:].hex()
     return address
 
 # Пример использования:
 if __name__ == '__main__':
-    public_key_hex = '0x028f2081119bc5f056cdd4b5b1212eb4849bb5cddb528aa8b413f591e47e57f35b'
+    public_key_hex = '0x028f2081119bc5f056cdd4b5b1212eb4849bb5cddb528aa8b413f591e47e57f35b' #0xbc307bf58702e2d4a3fc397c876bd50f1fdf540b
     address = get_ethereum_address(public_key_hex)
     print(f"Ethereum-адрес: {address}")
