@@ -38,7 +38,8 @@ function MainMenu() {
 
   return (
     <div className="main-menu">
-      <h1>Welcome to MicroWallet</h1>
+      <h1>MicroWallet</h1>
+      <h2>the only wallet you need</h2>
 
       <button onClick={handleCreateWallet}>Create Wallet</button>
       <button>Import Wallet</button>

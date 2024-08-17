@@ -19,11 +19,19 @@ html, body {
 
 .main-menu h1 {
   font-size: 3rem; /* Увеличенный размер шрифта */
-  margin-bottom: 40px; /* Отступ снизу */
+  margin-bottom: 0px; /* Отступ снизу */
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
   font-family: 'Roboto', sans-serif; /* Применение нового шрифта */
 }
 
+.main-menu h2 {
+  font-size: 1.2rem; /* Уменьшенный размер шрифта */
+  margin-bottom: 80px;
+  margin-top: 0px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
+  font-family: 'Roboto', sans-serif; /* Применение нового шрифта */
+  opacity: 70%;
+}
 .main-menu button {
   padding: 15px 30px; /* Увеличенный отступ */
   margin: 10px; /* Отступ между кнопками */
