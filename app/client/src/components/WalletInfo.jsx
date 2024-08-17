@@ -70,7 +70,7 @@ const CheckBalance = ({ address }) => {
           if (address) {
               setError(null); // Сбрасываем ошибки перед новым запросом
               try {
-                  let address = '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe'; // FIXME: Временная штука - убрать 
+                //   let address = 'vitalik.eth'; // FIXME: Временная штука - убрать 
                   const response = await axios.get(`http://localhost:8000/check_balance/${address}`);
                   setBalance(response.data);
               } catch (error) {
