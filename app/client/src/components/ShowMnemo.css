@@ -1,0 +1,66 @@
+/* src/components/ShowMnemo.css */
+
+html, body {
+    height: 100%; /* Устанавливаем высоту body на 100% */
+    margin: 0; /* Убираем отступы */
+  }
+  
+  .show-mnemo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Высота окна браузера */
+    width: 100vw; /* Ширина окна браузера */
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); /* Градиентный фон */
+    color: white; /* Цвет текста */
+    text-align: center; /* Центрирование текста */
+    padding: 20px; /* Отступы внутри контейнера */
+    box-sizing: border-box; /* Учитываем padding в ширине и высоте контейнера */
+  }
+  
+  .show-mnemo h1 {
+    font-size: 3rem; /* Увеличенный размер шрифта */
+    margin-bottom: 0; /* Убираем отступ снизу */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
+    font-family: 'Roboto', sans-serif; /* Применение нового шрифта */
+  }
+  
+  .show-mnemo h2 {
+    font-size: 1.2rem; /* Уменьшенный размер шрифта */
+    margin-bottom: 20px; /* Отступ снизу */
+    margin-top: 0; /* Убираем отступ сверху */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
+    font-family: 'Roboto', sans-serif; /* Применение нового шрифта */
+    opacity: 0.7; /* Полупрозрачность */
+  }
+  
+  .show-mnemo h3 {
+    font-size: 1.5rem; /* Размер шрифта для мнемонической фразы */
+    margin-bottom: 20px; /* Отступ снизу */
+    width: 200px;
+    text-align: left;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
+    font-family: 'Roboto', sans-serif; /* Применение нового шрифта */
+  }
+  
+
+  
+  .show-mnemo button {
+    padding: 15px 30px; /* Увеличенный отступ */
+    margin: 10px; /* Отступ между кнопками */
+    font-size: 1.2rem; /* Увеличенный размер шрифта */
+    color: white; /* Цвет текста */
+    background-color: #007bff; /* Цвет кнопки */
+    border: none;
+    border-radius: 10px; /* Скругление углов */
+    cursor: pointer; /* Указатель при наведении */
+    transition: background-color 0.3s, transform 0.2s; /* Плавный переход цвета и масштаба */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень кнопки */
+  }
+  
+  .show-mnemo button:hover {
+    background-color: #0056b3; /* Цвет кнопки при наведении */
+    transform: scale(1.05); /* Увеличение кнопки при наведении */
+  }
+  

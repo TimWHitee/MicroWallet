@@ -1,16 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Измените здесь
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MainMenu from './components/MainMenu';
-import WalletInfo from './components/WalletInfo'; // создайте этот компонент
+import WalletInfo from './components/WalletInfo';
+import ShowMnemo from './components/ShowMnemo'; // Импортируйте ShowMnemo
 import { WalletProvider } from './WalletContext'; // Импортируйте контекст
 
 function App() {
   return (
     <WalletProvider>
       <Router>
-        <Routes> {/* Замените Switch на Routes */}
-          <Route path="/" element={<MainMenu />} /> {/* Используйте element вместо component */}
-          <Route path="/wallet-info" element={<WalletInfo />} /> {/* Используйте element вместо component */}
+        <Routes> 
+          <Route path="/" element={<MainMenu />} /> 
+          <Route path="/wallet-info" element={<WalletInfo />} /> 
+          <Route path="/show-mnemo" element={<ShowMnemo />} /> {/* Убедитесь, что ShowMnemo импортирован */}
         </Routes>
       </Router>
     </WalletProvider>
