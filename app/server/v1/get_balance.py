@@ -1,6 +1,6 @@
 from web3 import Web3
 from .get_eth_price import get_eth_price
-
+import time
 def get_eth_balance(address, rpc_url='https://cloudflare-eth.com'):
     """
     Получает баланс Ethereum-адреса через web3.py.
@@ -13,9 +13,12 @@ def get_eth_balance(address, rpc_url='https://cloudflare-eth.com'):
     web3 = Web3(Web3.HTTPProvider(rpc_url))
     
     # Проверка подключения
-    if not web3.is_connected():
-        raise Exception("Не удалось подключиться к Ethereum узлу.")
-    
+
+    while not web3.is_connected():
+        print("Unable to connect to Etherium node. Retrying in 3 sec...")
+        time.sleep(3)
+        web3 = Web3(Web3.HTTPProvider(rpc_url))
+
     # Получаем баланс в Wei
     balance_wei = web3.eth.get_balance(address)
     
