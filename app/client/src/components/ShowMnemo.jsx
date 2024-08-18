@@ -68,7 +68,9 @@ function ShowMnemo() {
       setError("The words you entered do not match. Please try again.");
     }
   };
-
+  const handleSkip = () => {
+    navigate("/wallet-info");
+  }
   const handleDownload = () => {
     const mnemonicText = walletData.mnemonic.join(' ');
     const blob = new Blob([mnemonicText], { type: 'text/plain;charset=utf-8' });
@@ -101,6 +103,7 @@ function ShowMnemo() {
                 </ul>
               </div>
               <button onClick={handleReady}>Ready!</button>
+              <button className="dev-button" onClick={handleSkip}>Skip (only dev mode)</button> {/* dev skip button */}
               <button className="download-button" onClick={handleDownload}>
                 <img 
                   src="https://img.icons8.com/ios-glyphs/30/000000/download--v1.png" 
