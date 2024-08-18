@@ -56,7 +56,7 @@ function ShowMnemo() {
     <div className="show-mnemo">
       <h1>Mnemonic</h1>
       <h2>Remember it!</h2>
-      <h3>This is the first and the last time you see your mnemonic phrase, make sure you've saved it! Click on download button in the right corner</h3>
+      <h3>This is the first and the last time you see your mnemonic phrase, make sure you've saved it!</h3>
       <h4>Download</h4>
       {walletData ? (
         <>
