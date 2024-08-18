@@ -27,7 +27,6 @@ function ShowMnemo() {
         const data = await response.json();
 
         if (response.ok) {
-          setWalletData(data);
           localStorage.setItem("walletData", JSON.stringify(data));
           setWalletDataState(data);
         } else {

@@ -32,7 +32,7 @@ const WalletInfo = ({ walletData }) => {
                 <span className="value">
                     {walletData.address}
                     <FontAwesomeIcon 
-                        icon={isCopied ? faCheck : faCopy} // Меняем значок в зависимости от состояния
+                        icon={isCopied ? faCheck : faCopy} 
                         style={{ marginLeft: '10px', cursor: 'pointer', color: isCopied ? 'green' : 'black' }} 
                         onClick={() => copyToClipboard(walletData.address)} 
                     />
