@@ -13,7 +13,7 @@ const WalletInfo = ({ walletData }) => {
           setIsCopied(true); // Устанавливаем состояние скопированного адреса
           setTimeout(() => setIsCopied(false), 2000); // Сбрасываем состояние через 2 секунды
       }).catch((error) => {
-          console.error("Ошибка при копировании адреса:", error);
+          console.error("Error while copying:", error);
       });
   };
     const toggleVisibility = () => {
@@ -41,21 +41,14 @@ const WalletInfo = ({ walletData }) => {
             {isVisible && (
                 <>
                     <div className="wallet-detail">
-                        <span className="label">Public Key:</span>
-                        <span className="value">{walletData.public_key}</span>
-                    </div>
-                    <div className="wallet-detail">
                         <span className="label">Private Key:</span>
-                        <span className="value">{walletData.private_key}</span> {/* Скрываем */}
+                        <span className="value">{walletData.private_key}</span> 
                     </div>
-                    <div className="wallet-detail">
-                        <span className="label">Mnemonic:</span>
-                        <span className="value">{walletData.mnemonic.join(' ')}</span> {/* Скрываем */}
-                    </div>
+
                 </>
             )}
             <button className="toggle-button" onClick={toggleVisibility}>
-                {isVisible ? "Скрыть реквизиты" : "Показать реквизиты"}
+                {isVisible ? "Hide private key" : "Show private key"}
             </button>
         </div>
     );

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import './ShowMnemo.css'; 
 import { useWallet } from '../WalletContext';
 import { useNavigate } from 'react-router-dom';
+import { saveAs } from 'file-saver'; // You might need to install the 'file-saver' package
 
 function ShowMnemo() {
   const { setWalletData } = useWallet();
@@ -45,12 +46,18 @@ function ShowMnemo() {
     navigate("/wallet-info");
   };
 
+  const handleDownload = () => {
+    const mnemonicText = walletData.mnemonic.join(' ');
+    const blob = new Blob([mnemonicText], { type: 'text/plain;charset=utf-8' });
+    saveAs(blob, 'mnemonic.txt');
+  };
+
   return (
     <div className="show-mnemo">
       <h1>Mnemonic</h1>
       <h2>Remember it!</h2>
-      <h3>This is the first and the last time you see your mnemonic phrase, make sure you've saved it!</h3>
-
+      <h3>This is the first and the last time you see your mnemonic phrase, make sure you've saved it! Click on download button in the right corner</h3>
+      <h4>Download</h4>
       {walletData ? (
         <>
           <div className="mnemonic-list">
@@ -66,6 +73,13 @@ function ShowMnemo() {
             </ul>
           </div>
           <button onClick={handleReady}>Ready!</button>
+          <button className="download-button" onClick={handleDownload}>
+            <img 
+              src="https://img.icons8.com/ios-glyphs/30/000000/download--v1.png" 
+              alt="Download" 
+              className="download-icon"
+            />
+          </button>
         </>
       ) : (
         <p>Generating your wallet, please wait...</p>

@@ -25,6 +25,14 @@ html, body {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
     font-family: 'Roboto', sans-serif; /* Применение нового шрифта */
   }
+  .show-mnemo h4 {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
+    font-family: 'Roboto', sans-serif; /* Применение нового шрифта */
+    position: absolute;
+    bottom: 105px;
+    right: 67px;
+
+  }
   
   .show-mnemo h2 {
     font-size: 1.2rem; /* Уменьшенный размер шрифта */
@@ -89,5 +97,19 @@ html, body {
   
   .mnemonic-item {
     margin-bottom: 5px;
+  }
+  
+  .download-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+  }
+  
+  .download-icon {
+    width: 24px;
+    height: 24px;
   }
   
