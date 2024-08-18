@@ -33,16 +33,19 @@ html, body {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
     font-family: 'Roboto', sans-serif; /* Применение нового шрифта */
     opacity: 0.7; /* Полупрозрачность */
+    margin-bottom: 70px;
   }
-  
+
   .show-mnemo h3 {
-    font-size: 1.5rem; /* Размер шрифта для мнемонической фразы */
+    font-size: 1.2rem; /* Уменьшенный размер шрифта */
     margin-bottom: 20px; /* Отступ снизу */
-    width: 200px;
-    text-align: left;
+    margin-top: 0; /* Убираем отступ сверху */
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
     font-family: 'Roboto', sans-serif; /* Применение нового шрифта */
+    opacity: 0.7; /* Полупрозрачность */
+    margin-bottom: 70px;
   }
+  
   
 
   
@@ -53,6 +56,7 @@ html, body {
     color: white; /* Цвет текста */
     background-color: #007bff; /* Цвет кнопки */
     border: none;
+    margin-top: 80px;
     border-radius: 10px; /* Скругление углов */
     cursor: pointer; /* Указатель при наведении */
     transition: background-color 0.3s, transform 0.2s; /* Плавный переход цвета и масштаба */
@@ -62,5 +66,28 @@ html, body {
   .show-mnemo button:hover {
     background-color: #0056b3; /* Цвет кнопки при наведении */
     transform: scale(1.05); /* Увеличение кнопки при наведении */
+  }
+
+  .show-mnemo {
+    text-align: center;
+  }
+  
+  .mnemonic-list {
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-size: 1.2rem
+
+  }
+  
+  .mnemonic-column {
+    margin: 0 20px;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .mnemonic-item {
+    margin-bottom: 5px;
   }
   

@@ -4,15 +4,15 @@ import { useWallet } from '../WalletContext';
 import { useNavigate } from 'react-router-dom';
 
 function ShowMnemo() {
-  const { setWalletData } = useWallet(); // Получаем функцию установки данных о кошельке
-  const [error, setError] = useState(null); // Для обработки ошибок
-  const [walletData, setWalletDataState] = useState(null); // Для хранения данных кошелька
-  const navigate = useNavigate(); // Для перенаправления
+  const { setWalletData } = useWallet();
+  const [error, setError] = useState(null);
+  const [walletData, setWalletDataState] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const createWallet = async () => {
-      localStorage.removeItem("walletData"); // Очищаем существующие данные кошелька
-      setError(null); // Сбрасываем ошибку
+      localStorage.removeItem("walletData");
+      setError(null);
 
       try {
         const response = await fetch("http://localhost:8000/create_wallet/", {
@@ -20,17 +20,17 @@ function ShowMnemo() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ words_in_mnemo: 24 }), // Указываем количество слов и имя кошелька
+          body: JSON.stringify({ words_in_mnemo: 24 }),
         });
 
-        const data = await response.json(); // Получаем данные из ответа
+        const data = await response.json();
 
         if (response.ok) {
-          setWalletData(data); // Успешное создание кошелька
-          localStorage.setItem("walletData", JSON.stringify(data)); // Сохранение данных в localStorage
-          setWalletDataState(data); // Сохраняем весь объект data в состоянии
+          setWalletData(data);
+          localStorage.setItem("walletData", JSON.stringify(data));
+          setWalletDataState(data);
         } else {
-          setError(data.detail); // Обработка ошибки
+          setError(data.detail);
         }
       } catch (error) {
         console.error("Error creating wallet:", error);
@@ -38,7 +38,7 @@ function ShowMnemo() {
       }
     };
 
-    createWallet(); // Вызываем функцию создания кошелька при монтировании компонента
+    createWallet();
   }, [setWalletData]);
 
   const handleReady = () => {
@@ -49,11 +49,23 @@ function ShowMnemo() {
     <div className="show-mnemo">
       <h1>Mnemonic</h1>
       <h2>Remember it!</h2>
-      
+      <h3>This is the first and the last time you see your mnemonic phrase, make sure you've saved it!</h3>
+
       {walletData ? (
         <>
-          <h3>{walletData.mnemonic.join(' ')}</h3>
-          <button onClick={handleReady}>Proceed</button>
+          <div className="mnemonic-list">
+            <ul className="mnemonic-column">
+              {walletData.mnemonic.slice(0, 12).map((word, index) => (
+                <li key={index} className="mnemonic-item">{index + 1}. {word}</li>
+              ))}
+            </ul>
+            <ul className="mnemonic-column">
+              {walletData.mnemonic.slice(12).map((word, index) => (
+                <li key={index + 12} className="mnemonic-item">{index + 13}. {word}</li>
+              ))}
+            </ul>
+          </div>
+          <button onClick={handleReady}>Ready!</button>
         </>
       ) : (
         <p>Generating your wallet, please wait...</p>
