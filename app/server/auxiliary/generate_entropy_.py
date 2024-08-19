@@ -17,7 +17,7 @@ def generate_entropy(length: int) -> str:
         raise ValueError("Length must be either 128 or 256 bits")
 
 
-    with open('BIPS/bip39.txt') as file:
+    with open('../../BIPS/bip39.txt') as file:
             data = [line.strip() for line in file.readlines()]
 
     random_indices = [random.randint(0,2047) for _ in range(24)]

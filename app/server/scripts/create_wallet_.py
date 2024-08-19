@@ -1,10 +1,14 @@
-from .generate_entropy_ import generate_entropy
-from .generate_mnemonic import generate_mnemonic_12 , generate_mnemonic_24
-from .mnemonic_to_seed import to_seed
-from .eth_address_from_public_key import get_ethereum_address
-from .mnemonic_to_addresses import generate_addresses
+from auxiliary import (
+    generate_addresses, 
+    to_seed,
+    generate_mnemonic_12, 
+    generate_mnemonic_24, 
+    generate_entropy
+)
+
 
 def create_wallet(words_in_mnemo: int = 24):
+
     """
     Creates a wallet with a specified number of words in the mnemonic.
     :params: words_in_mnemo: The number of words in the mnemonic.

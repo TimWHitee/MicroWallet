@@ -1,6 +1,6 @@
 import requests
 
-def get_eth_price():
+def get_eth_price_func():
     """
     Получает текущую стоимость эфира (ETH) в долларах США (USD).
     

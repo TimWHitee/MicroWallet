@@ -2,10 +2,10 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import sys,os
-from .v1 import *
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 
-from app.server.scripts import create_wallet
+from auxiliary import EthClient
+from scripts import create_wallet
 
 app = FastAPI()
 
@@ -47,7 +47,13 @@ async def check_balance(address: str):
     """
     Проверяет баланс по Ethereum адресу и возвращает его в ETH и USD.
     """
-    balance = get_eth_balance(address=address)
+    client = EthClient(
+        address=address,
+        rpc_url="https://cloudflare-eth.com",
+        net_url=""
+    )
+
+    balance = client.get_balance()
 
     return BalanceResponse(balance_eth=balance['balance_eth'], balance_usd=balance['balance_usd'])
 

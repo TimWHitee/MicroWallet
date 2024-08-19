@@ -1,32 +1,16 @@
-import React, { useState } from "react";
-import './MainMenu.css'; 
-import { useWallet } from '../WalletContext'; // Импортируйте хук
+import { useNavigate } from "react-router-dom";
+import "./MainMenu.css";
 
-function MainMenu() {
-  const { setWalletData } = useWallet(); // Получите функцию установки данных о кошельке
-  const [walletName, setWalletName] = useState("");
-  const [error, setError] = useState(null);
-
-  const handleCreateWallet = async () => {
-    try {
-        window.location.href = "/show-mnemo";
-      } 
-    catch (error) {
-      console.error("Error creating wallet:", error);
-      setError("An error occurred while creating the wallet.");
-    }
-  };
+export default function MainMenu() {
+  const navigate = useNavigate();
 
   return (
     <div className="main-menu">
       <h1>MicroWallet</h1>
       <h2>the only wallet you need</h2>
 
-      <button onClick={handleCreateWallet}>Create Wallet</button>
-      <button>Import Wallet</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <button onClick={() => navigate("/show-mnemo")}>Create Wallet</button>
+      <button onClick={() => navigate("/import")}>Import Wallet</button>
     </div>
   );
 }
-
-export default MainMenu;

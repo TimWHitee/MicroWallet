@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Полная высота окна */
+  width: 100vw; /* Полная ширина окна */
+  background: linear-gradient(
+    135deg,
+    #6a11cb 0%,
+    #2575fc 100%
+  ); /* Градиентный фон */
+  color: white; /* Цвет текста */
+  text-align: center; /* Центрирование текста */
+}
+
+.container h3 {
+  font-size: 3rem; /* Увеличенный размер шрифта */
+  margin-bottom: 40px; /* Отступ снизу */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
+  font-family: "Roboto", sans-serif; /* Применение нового шрифта */
+}
+
+/* .container h2 {
+  font-size: 1.2rem; 
+  margin-bottom: 80px;
+  margin-top: 0px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); 
+  font-family: "Roboto", sans-serif; 
+  opacity: 70%;
+} */
+
+.container button {
+  padding: 15px 30px; /* Увеличенный отступ */
+  margin: 10px; /* Отступ между кнопками */
+  font-size: 1.2rem; /* Увеличенный размер шрифта */
+  color: white; /* Цвет текста */
+  background-color: #007bff; /* Цвет кнопки */
+  border: none;
+  border-radius: 10px; /* Скругление углов */
+  cursor: pointer; /* Указатель при наведении */
+  transition: background-color 0.3s, transform 0.2s; /* Плавный переход цвета и масштаба */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень кнопки */
+}
+
+.container button:hover {
+  background-color: #0056b3; /* Цвет кнопки при наведении */
+  transform: scale(1.05); /* Увеличение кнопки при наведении */
+}
