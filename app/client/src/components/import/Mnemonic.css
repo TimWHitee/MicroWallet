@@ -93,5 +93,5 @@ input:checked + .slider:before {
   font-size: 16px;
   cursor: pointer;
   align-self: center; /* Центрирование кнопки */
-  margin-top: 20px; /* Отталкивание кнопки вниз */
+  margin-top: 10px; /* Отталкивание кнопки вниз */
 }

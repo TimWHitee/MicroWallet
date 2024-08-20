@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Mnemonic.css";
 
 export default function Mnemonic() {
   const [mnemonicLength, setMnemonicLength] = useState(12);
   const [mnemonicWords, setMnemonicWords] = useState(Array(12).fill(""));
   const [lastPaste, setLastPaste] = useState(null);
+  const navigate = useNavigate();
 
   const handleSwitch = () => {
     const newLength = mnemonicLength === 12 ? 24 : 12;
@@ -19,7 +21,7 @@ export default function Mnemonic() {
   };
 
   const handlePaste = (e) => {
-    e.preventDefault(); // Предотвращает вставку текста в первое поле
+    e.preventDefault(); // Prevent default paste behavior
     const pastedText = e.clipboardData.getData("text");
     const words = pastedText.split(" ").slice(0, mnemonicLength);
 
@@ -31,11 +33,41 @@ export default function Mnemonic() {
 
   const handleKeyDown = (e) => {
     if (e.ctrlKey && e.key === "z") {
-      e.preventDefault(); // Предотвращает обычное поведение "Ctrl + Z"
+      e.preventDefault(); // Prevent default "Ctrl + Z" behavior
       if (lastPaste) {
         setMnemonicWords(Array(mnemonicLength).fill(""));
         setLastPaste(null);
       }
+    }
+  };
+
+  const handleImport = async () => {
+    const data = { mnemonic: mnemonicWords };
+
+    try {
+      const response = await fetch("http://localhost:8000/import_wallet/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // Save wallet data to localStorage
+        localStorage.setItem("walletData", JSON.stringify(result));
+        
+        // Navigate to wallet info page
+        navigate("/wallet-info");
+      } else {
+        console.error("Error importing wallet:", result.detail);
+        // You can also set an error state to display to the user
+      }
+    } catch (error) {
+      console.error("Error importing wallet:", error);
+      // Handle the error, maybe set an error state to inform the user
     }
   };
 
@@ -70,7 +102,7 @@ export default function Mnemonic() {
           ))}
         </div>
 
-        <button className="button">Import wallet</button>
+        <button className="button" onClick={handleImport}>Import wallet</button>
       </form>
     </div>
   );

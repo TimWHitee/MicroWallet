@@ -100,7 +100,7 @@ def generate_mnemonic_12(entropy):
     indices = [int(i, 2) for i in binary_indices]
 
     # Распаковка списка всех слов из BIP39
-    with open('BIPS/bip39.txt') as file:
+    with open('../../BIPS/bip39.txt') as file:
         data = [line.strip() for line in file.readlines()]
 
     # Проверка количества слов в файле (должно быть 2048)
