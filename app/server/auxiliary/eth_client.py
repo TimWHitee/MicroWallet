@@ -48,7 +48,7 @@ class EthClient:
             }
         }
 
-        with open('../utils/tokens.json') as file:
+        with open('app/utils/tokens.json') as file:
             token_contracts = json.load(file)
 
         # Получение балансов токенов
@@ -72,7 +72,8 @@ class EthClient:
         :param num_transactions: нужной для получения количество транзакций
         :return: список транзакций
         '''
-        url = f"https://api.etherscan.io/api?module=account&action=txlist&address={self.address}&sort=desc&apikey={os.environ.get("ETHERSCAN")}"
+        b = os.environ.get("ETHERSCAN")
+        url = f"https://api.etherscan.io/api?module=account&action=txlist&address={self.address}&sort=desc&apikey={b}"
     
         response = requests.get(url)
         data = response.json()

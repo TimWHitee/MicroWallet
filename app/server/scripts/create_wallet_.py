@@ -1,4 +1,4 @@
-from auxiliary import (
+from ..auxiliary import (
     generate_addresses, 
     to_seed,
     generate_mnemonic_12, 
