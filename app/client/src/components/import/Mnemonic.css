@@ -1,10 +1,43 @@
-.container {
+.mnemo-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  height: 100vh; /* Высота на весь экран */
-  padding: 20px;
+  justify-content: center;
+  height: 100vh; /* Полная высота окна */
+  width: 100vw; /* Полная ширина окна */
+  background: linear-gradient(
+    135deg,
+    #6a11cb 0%,
+    #2575fc 100%
+  ); /* Градиентный фон */
+  color: white; /* Цвет текста */
+  text-align: center; /* Центрирование текста */
+}
+
+.mnemo-container h3 {
+  font-size: 3rem; /* Увеличенный размер шрифта */
+  margin-bottom: 20px; /* Отступ снизу */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
+  font-family: "Roboto", sans-serif; /* Применение нового шрифта */
+}
+
+.mnemo-container button {
+  padding: 15px 30px; /* Увеличенный отступ */
+  margin: 10px; /* Отступ между кнопками */
+  margin-top: 40px;
+  font-size: 1.2rem; /* Увеличенный размер шрифта */
+  color: white; /* Цвет текста */
+  background-color: #007bff; /* Цвет кнопки */
+  border: none;
+  border-radius: 10px; /* Скругление углов */
+  cursor: pointer; /* Указатель при наведении */
+  transition: background-color 0.3s, transform 0.2s; /* Плавный переход цвета и масштаба */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень кнопки */
+}
+
+.mnemo-container button:hover {
+  background-color: #0056b3; /*к Цвет нопки при наведении */
+  transform: scale(1.05); /* Увеличение кнопки при наведении */
 }
 
 .switch-container {
@@ -60,6 +93,7 @@ input:checked + .slider:before {
 }
 
 .switch-label {
+  margin: 20px;
   font-size: 18px;
   color: white;
   font-weight: bold;
@@ -77,21 +111,28 @@ input:checked + .slider:before {
 }
 
 .mnemonic-input {
-  padding: 10px;
-  font-size: 14px;
-  border-radius: 10px;
-  transition: 0.4s;
-  cursor: pointer;
+  width: 125px; /* Ширина инпута */
+  padding: 10px; /* Внутренние отступы */
+  margin: 10px 0; /* Отступы сверху и снизу */
+  margin-right: 10px;
+  border-radius: 8px; /* Скругление углов */
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Полупрозрачная граница */
+  background-color: rgba(255, 255, 255, 0.5); /* Полупрозрачный фон */
+  color: white; /* Цвет текста */
+  font-size: 1.2rem; /* Размер шрифта */
+  font-family: "Roboto", sans-serif; /* Применение шрифта */
+  text-align: center; /* Выравнивание текста по центру */
+  outline: none; /* Убираем стандартное обрамление при фокусе */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень инпута */
+  transition: border-color 0.3s, background-color 0.3s, transform 0.4s; /* Плавные переходы для границы и фона */
 }
 
 .mnemonic-input:hover {
   transform: scale(1.1);
 }
 
-.button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  align-self: center; /* Центрирование кнопки */
-  margin-top: 10px; /* Отталкивание кнопки вниз */
+.error-message {
+  color: rgb(255, 255, 255);
+  font-family: "Roboto", sans-serif;
+  margin-top: 10px;
 }

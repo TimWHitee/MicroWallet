@@ -5,7 +5,7 @@ export default function Registration() {
   const navigate = useNavigate();
 
   return (
-    <div className="container">
+    <div className="import-container">
       <h3>Choose import path</h3>
 
       <button onClick={() => navigate("/import/mnemonic")}>

@@ -4,7 +4,11 @@ from time import sleep
 import requests
 import os
 from dotenv import load_dotenv
+import json
 load_dotenv()
+
+ERC20_ABI = json.loads('[{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"}]')
+
 
 class EthClient:
     def __init__(self, address: str, rpc_url: str, net_url: str) -> None:
@@ -38,9 +42,26 @@ class EthClient:
     # Преобразуем Wei в Ether
         balance_eth = float(round(self.web3.from_wei(balance_wei, 'ether'),6))
         balance = {
-            'balance_eth': balance_eth,
-            'balance_usd' : round(balance_eth * get_eth_price_func(),2)
+            'balance_usd': round(balance_eth * get_eth_price_func(), 2),
+            'tokens': {
+                'ETH': balance_eth
+            }
         }
+
+        with open('../utils/tokens.json') as file:
+            token_contracts = json.load(file)
+
+        # Получение балансов токенов
+        for token in token_contracts:
+            try:
+                token_contract = self.web3.eth.contract(address=Web3.to_checksum_address(token['address']), abi=ERC20_ABI)
+                balance_token_wei = token_contract.functions.balanceOf(self.address).call()
+                decimals = token_contract.functions.decimals().call()
+                balance_token = balance_token_wei / (10 ** decimals)
+                balance['tokens'][token['name']] = balance_token
+                print("Токен добавлен")
+            except:
+                continue
         return balance
 
 

@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Mnemonic.css";
+import "./Private.css";
 
 export default function PrivateKeyImport() {
   const [privateKey, setPrivateKey] = useState("");
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setPrivateKey(e.target.value);
+    setError(null);
   };
 
   const handleImport = async () => {
-    const data = { private: privateKey }; // Используем ключ 'private'
+    const data = { private: privateKey };
+
+    console.log(data);
 
     try {
       const response = await fetch("http://localhost:8000/import_wallet/", {
@@ -25,36 +29,40 @@ export default function PrivateKeyImport() {
       const result = await response.json();
 
       if (response.ok) {
-        // Сохраняем данные кошелька в локальное хранилище
         localStorage.setItem("walletData", JSON.stringify(result));
-        
-        // Переходим на страницу информации о кошельке
         navigate("/wallet-info");
       } else {
-        console.error("Error importing wallet:", result.detail);
-        // Вы можете также установить состояние ошибки для отображения пользователю
+        const errorMessage =
+          typeof result.detail === "string"
+            ? result.detail
+            : "Invalid private key. Please try again.";
+        setError(errorMessage);
       }
     } catch (error) {
-      console.error("Error importing wallet:", error);
-      // Обрабатываем ошибку, возможно, установить состояние ошибки для информирования пользователя
+      console.error("Error response:", result);
+      setError(
+        "Error importing wallet. Please check your network connection and try again."
+      );
     }
   };
 
   return (
-    <div className="container">
+    <div className="private-container">
       <h3>Import with Private Key</h3>
       <form onSubmit={(e) => e.preventDefault()}>
-        <div className="mnemonic-grid">
+        <div className="private-grid">
           <input
             type="text"
             value={privateKey}
             onChange={handleInputChange}
             placeholder="Enter your private key"
-            className="mnemonic-input"
+            className="private-input"
           />
         </div>
-
-        <button className="button" onClick={handleImport}>Import wallet</button>
+        {error && <p className="private-error-message">{error}</p>}
+        <button className="button" onClick={handleImport}>
+          Import wallet
+        </button>
       </form>
     </div>
   );

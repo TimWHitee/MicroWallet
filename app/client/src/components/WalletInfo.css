@@ -14,7 +14,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Увеличили тень */
   max-width: 850px; /* Увеличили максимальную ширину */
   margin-right: 20px; /* Отступ справа для пространства между элементами */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   position: relative; /* Для размещения заголовка */
   margin-left: 20px;
 }
@@ -66,6 +66,13 @@
   margin-top: 30px; /* Увеличили отступ сверху */
   font-size: 1.5em; /* Увеличили размер шрифта для ошибок */
 }
+.remove-token-button {
+  background: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+  margin-left: 10px;
+}
 
 /* Стиль для кнопки */
 .toggle-button {
@@ -89,11 +96,11 @@
 .check-balance {
   background-color: #f9f9f9; /* Светлый фон для информации о балансе */
   border-radius: 16px; /* Скругление углов */
-  padding: 20px; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   width: 300px; /* Ширина элемента */
   text-align: center; /* Центрируем текст */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
   position: relative; /* Позиционирование относительно общего контейнера */
 }
 
@@ -104,7 +111,7 @@
   padding: 15px; /* Отступы вокруг */
   margin: 10px 0; /* Отступ сверху и снизу */
   text-align: center; /* Центрируем текст */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
   border: 1px solid #e0e0e0; /* Легкая граница */
 }
 

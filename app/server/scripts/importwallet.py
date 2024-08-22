@@ -5,8 +5,7 @@ from eth_keys import keys
 from eth_utils import to_checksum_address
 
 
-from auxiliary import EthClient, get_ethereum_address
-from auxiliary import to_seed
+from auxiliary import EthClient, to_seed
 from mnemonic import Mnemonic
 
 
@@ -29,13 +28,18 @@ class SImportWallet(BaseModel):
     @field_validator("mnemonic")
     def validate_mnemonic(cls, mnemonic):
         if len(mnemonic) not in (12, 24):
-            raise ValueError("Wrong list length!")
+            raise ValidationError("Wrong list length!")
         return mnemonic
     
     @field_validator("private")
     def validate_private(cls, private: str):
         if private.startswith("0x"):
-            return private.removeprefix("0x")
+            private = private[2:]
+
+        # Проверяем длину и содержание
+        if len(private) != 64 or not all(c in '0123456789abcdefABCDEF' for c in private):
+            raise ValueError("Invalid private key.")
+        
         return private
     
 # Пример проверки валидации
@@ -64,47 +68,48 @@ def import_wallet(data: SImportWallet, num_wallets: int = 1):
     if data.mnemonic:
     # Создаем объект мнемоники    
         mnemonic = " ".join(data.mnemonic)
-
+        mnemo = Mnemonic("english")
+        
+        if mnemo.check(mnemonic):
         # Создаем seed из мнемоники
-        seed_bytes = to_seed(mnemonic)
+            seed_bytes = to_seed(mnemonic)
 
-        # Инициализируем Bip44 для Ethereum
-        bip44_mst = Bip44.FromSeed(seed_bytes, Bip44Coins.ETHEREUM)
+            # Инициализируем Bip44 для Ethereum
+            bip44_mst = Bip44.FromSeed(seed_bytes, Bip44Coins.ETHEREUM)
 
-    # Список для хранения результатов
-        result = []
+        # Список для хранения результатов
+            result = []
 
-        # Генерация кошельков
-        for i in range(num_wallets):
-            bip44_acc = bip44_mst.Purpose().Coin().Account(0).Change(Bip44Changes.CHAIN_EXT).AddressIndex(i)
+            # Генерация кошельков
+            for i in range(num_wallets):
+                bip44_acc = bip44_mst.Purpose().Coin().Account(0).Change(Bip44Changes.CHAIN_EXT).AddressIndex(i)
 
-            # Получение адреса и приватного ключа
-            address = bip44_acc.PublicKey().ToAddress()
-            private_key = bip44_acc.PrivateKey().Raw().ToHex()
+                # Получение адреса и приватного ключа
+                address = bip44_acc.PublicKey().ToAddress()
+                private_key = bip44_acc.PrivateKey().Raw().ToHex()
 
-            # Инициализация клиента
-            client = EthClient(
-                address=address,
-                rpc_url=data.rpc_url,
-                net_url=data.net_url,
-            )
+                # Инициализация клиента
+                client = EthClient(
+                    address=address,
+                    rpc_url=data.rpc_url,
+                    net_url=data.net_url,
+                )
 
-            # Получение истории транзакций
-            transactions = client.get_transactions(
-                num_transactions=10
-            )
+                # Получение истории транзакций
+                transactions = client.get_transactions(
+                    num_transactions=10
+                )
 
-            # Сохраняем результаты в список
-            result.append({
-                "address": address,
-                "private_key": private_key,
-                "transactions" : transactions
-            })
+                # Сохраняем результаты в список
+                result.append({
+                    "address": address,
+                    "private_key": private_key,
+                    "transactions" : transactions
+                })
 
-            return result
+                return result
 
     elif data.private:
-
         private_key = keys.PrivateKey(bytes.fromhex(data.private))
         public_key= private_key.public_key
 

@@ -1,0 +1,73 @@
+.private-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full height of the viewport */
+  width: 100vw; /* Full width of the viewport */
+  background: linear-gradient(
+    135deg,
+    #6a11cb 0%,
+    #2575fc 100%
+  ); /* Gradient background */
+  color: white; /* Text color */
+  text-align: center; /* Center text */
+}
+
+.private-container h3 {
+  font-size: 4rem; /* Increased font size */
+  margin-bottom: 160px; /* Reduced bottom margin to maintain spacing */
+  margin-top: -180px; /* Move the heading up */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Text shadow */
+  font-family: "Roboto", sans-serif; /* Apply font */
+}
+
+.private-grid {
+  margin: 20px 0; /* Margin for spacing */
+}
+
+.private-input {
+  border-radius: 8px; /* Rounded corners */
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Semi-transparent border */
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+  color: rgb(255, 255, 255); /* Text color */
+  font-size: 1.2rem; /* Font size */
+  font-family: "Roboto", sans-serif; /* Apply font */
+  text-align: center; /* Center text */
+  outline: none; /* Remove default outline on focus */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Input shadow */
+  transition: border-color 0.3s, background-color 0.3s, transform 0.4s; /* Smooth transitions */
+  width: 800px; /* Set width for the input field */
+  height: 40px; /* Set height for the input field */
+  padding: 10px;
+}
+
+.private-input:hover {
+  transform: scale(1.02); /* Slightly enlarge on hover */
+}
+
+.private-container button {
+  width: 200px;
+  height: 60px;
+  padding: 12px 25px; /* Padding for the button */
+  margin: 20px 20px; /* Margin for spacing */
+  font-size: 1.2rem;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.private-container button:hover {
+  background-color: #0056b3; /* Button hover color */
+  transform: scale(1.05); /* Enlarge button on hover */
+}
+
+.private-error-message {
+  margin-top: 10px; /* Margin for spacing above error message */
+  font-family: "Roboto", sans-serif;
+  color: rgb(255, 255, 255);
+}

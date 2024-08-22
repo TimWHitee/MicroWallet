@@ -1,71 +1,72 @@
 /* src/components/ShowMnemo.css */
 
-html, body {
-    height: 100%; /* Устанавливаем высоту body на 100% */
-    margin: 0; /* Убираем отступы */
-  }
-  
-  .show-mnemo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Высота окна браузера */
-    width: 100vw; /* Ширина окна браузера */
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); /* Градиентный фон */
-    color: white; /* Цвет текста */
-    text-align: center; /* Центрирование текста */
-    padding: 20px; /* Отступы внутри контейнера */
-    box-sizing: border-box; /* Учитываем padding в ширине и высоте контейнера */
-  }
-  
-  .show-mnemo h1 {
-    font-size: 3rem; /* Увеличенный размер шрифта */
-    margin-bottom: 0; /* Убираем отступ снизу */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
-    font-family: 'Roboto', sans-serif; /* Применение нового шрифта */
-  }
-  .show-mnemo h4 {
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
-    font-family: 'Roboto', sans-serif; /* Применение нового шрифта */
-    position: absolute;
-    bottom: 105px;
-    right: 67px;
+html,
+body {
+  height: 100%; /* Устанавливаем высоту body на 100% */
+  margin: 0; /* Убираем отступы */
+}
 
-  }
-  
-  .show-mnemo h2 {
-    font-size: 1.2rem; /* Уменьшенный размер шрифта */
-    margin-bottom: 20px; /* Отступ снизу */
-    margin-top: 0; /* Убираем отступ сверху */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
-    font-family: 'Roboto', sans-serif; /* Применение нового шрифта */
-    opacity: 0.7; /* Полупрозрачность */
-    margin-bottom: 70px;
-  }
+.show-mnemo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Высота окна браузера */
+  width: 100vw; /* Ширина окна браузера */
+  background: linear-gradient(
+    135deg,
+    #6a11cb 0%,
+    #2575fc 100%
+  ); /* Градиентный фон */
+  color: white; /* Цвет текста */
+  text-align: center; /* Центрирование текста */
+  padding: 20px; /* Отступы внутри контейнера */
+  box-sizing: border-box; /* Учитываем padding в ширине и высоте контейнера */
+}
 
-  .show-mnemo h3 {
-    font-size: 1.2rem; /* Уменьшенный размер шрифта */
-    margin-bottom: 20px; /* Отступ снизу */
-    margin-top: 0; /* Убираем отступ сверху */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
-    font-family: 'Roboto', sans-serif; /* Применение нового шрифта */
-    opacity: 0.7; /* Полупрозрачность */
-    margin-bottom: 70px;
-  }
-  
+.show-mnemo h1 {
+  font-size: 3rem; /* Увеличенный размер шрифта */
+  margin-bottom: 0; /* Убираем отступ снизу */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
+  font-family: "Roboto", sans-serif; /* Применение нового шрифта */
+}
+.show-mnemo h4 {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
+  font-family: "Roboto", sans-serif; /* Применение нового шрифта */
+  position: absolute;
+  bottom: 105px;
+  right: 67px;
+}
 
-  
-  .mnemonic-verification p {
-    font-size: 1.2rem; 
-    font-family: 'Roboto', sans-serif; /* Применение нового шрифта */
+.show-mnemo h2 {
+  font-size: 1.2rem; /* Уменьшенный размер шрифта */
+  margin-bottom: 20px; /* Отступ снизу */
+  margin-top: 0; /* Убираем отступ сверху */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
+  font-family: "Roboto", sans-serif; /* Применение нового шрифта */
+  opacity: 0.7; /* Полупрозрачность */
+  margin-bottom: 70px;
+}
 
-  }
+.show-mnemo h3 {
+  font-size: 1.2rem; /* Уменьшенный размер шрифта */
+  margin-bottom: 20px; /* Отступ снизу */
+  margin-top: 0; /* Убираем отступ сверху */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Тень текста */
+  font-family: "Roboto", sans-serif; /* Применение нового шрифта */
+  opacity: 0.7; /* Полупрозрачность */
+  margin-bottom: 70px;
+}
 
-  .mnemonic-verification h3 {
-    margin-top: 50px;
-  }
-  /* Стили для текстовых полей (инпутов) */
+.mnemonic-verification p {
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif; /* Применение нового шрифта */
+}
+
+.mnemonic-verification h3 {
+  margin-top: 50px;
+}
+/* Стили для текстовых полей (инпутов) */
 .mnemonic-verification input {
   width: 125px; /* Ширина инпута */
   padding: 10px; /* Внутренние отступы */
@@ -76,75 +77,92 @@ html, body {
   background-color: rgba(255, 255, 255, 0.5); /* Полупрозрачный фон */
   color: white; /* Цвет текста */
   font-size: 1.2rem; /* Размер шрифта */
-  font-family: 'Roboto', sans-serif; /* Применение шрифта */
+  font-family: "Roboto", sans-serif; /* Применение шрифта */
   text-align: center; /* Выравнивание текста по центру */
   outline: none; /* Убираем стандартное обрамление при фокусе */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень инпута */
   transition: border-color 0.3s, background-color 0.3s; /* Плавные переходы для границы и фона */
 }
-
+.dev-button {
+  position: absolute; /* Абсолютное позиционирование относительно родителя */
+  bottom: 100px; /* Отступ от нижнего края родителя */
+  left: 700px; /* Центрирование по горизонтали */
+  transform: translateX(
+    0%
+  ); /* Смещение на 50% ширины элемента для центрирования */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 /* Стили для инпутов при фокусе */
 .mnemonic-verification input:focus {
   border-color: white; /* Белая граница при фокусе */
-  background-color: rgba(255, 255, 255, 0.3); /* Немного более прозрачный фон при фокусе */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.3
+  ); /* Немного более прозрачный фон при фокусе */
 }
-  .show-mnemo p {
-    font-size: 1.2rem; 
-    font-family: 'Roboto', sans-serif; /* Применение нового шрифта */
-  }
-  .show-mnemo button {
-    padding: 15px 30px; /* Увеличенный отступ */
-    margin: 10px; /* Отступ между кнопками */
-    font-size: 1.2rem; /* Увеличенный размер шрифта */
-    color: white; /* Цвет текста */
-    background-color: #007bff; /* Цвет кнопки */
-    border: none;
-    margin-top: 80px;
-    border-radius: 10px; /* Скругление углов */
-    cursor: pointer; /* Указатель при наведении */
-    transition: background-color 0.3s, transform 0.2s; /* Плавный переход цвета и масштаба */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень кнопки */
-  }
-  
-  .show-mnemo button:hover {
-    background-color: #0056b3; /* Цвет кнопки при наведении */
-    transform: scale(1.05); /* Увеличение кнопки при наведении */
-  }
+.show-mnemo p {
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif; /* Применение нового шрифта */
+}
+.show-mnemo button {
+  padding: 15px 30px; /* Увеличенный отступ */
+  margin: 10px; /* Отступ между кнопками */
+  font-size: 1.2rem; /* Увеличенный размер шрифта */
+  color: white; /* Цвет текста */
+  background-color: #007bff; /* Цвет кнопки */
+  border: none;
+  margin-top: 80px;
 
-  .show-mnemo {
-    text-align: center;
-  }
-  
-  .mnemonic-list {
-    display: flex;
-    justify-content: center;
-    font-family: 'Roboto', sans-serif;
-    text-align: left;
-    font-size: 1.2rem
+  border-radius: 10px; /* Скругление углов */
+  cursor: pointer; /* Указатель при наведении */
+  transition: background-color 0.3s, transform 0.2s; /* Плавный переход цвета и масштаба */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень кнопки */
+}
 
-  }
-  
-  .mnemonic-column {
-    margin: 0 20px;
-    list-style: none;
-    padding: 0;
-  }
-  
-  .mnemonic-item {
-    margin-bottom: 5px;
-  }
-  
-  .download-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
-  }
-  
-  .download-icon {
-    width: 24px;
-    height: 24px;
-  }
-  
+.show-mnemo button:hover {
+  background-color: #0056b3; /* Цвет кнопки при наведении */
+  transform: scale(1.05); /* Увеличение кнопки при наведении */
+}
+
+.show-mnemo {
+  text-align: center;
+}
+
+.mnemonic-list {
+  display: flex;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+.mnemonic-column {
+  margin: 0 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.mnemonic-item {
+  margin-bottom: 5px;
+}
+
+.download-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+}
+
+.download-icon {
+  width: 24px;
+  height: 24px;
+}

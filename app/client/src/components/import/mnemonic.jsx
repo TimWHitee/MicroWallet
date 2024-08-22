@@ -1,49 +1,77 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Mnemonic.css";
+import { Mnemonic } from "ethers";
 
-export default function Mnemonic() {
+export default function Mnemonic_() {
   const [mnemonicLength, setMnemonicLength] = useState(12);
   const [mnemonicWords, setMnemonicWords] = useState(Array(12).fill(""));
   const [lastPaste, setLastPaste] = useState(null);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleSwitch = () => {
     const newLength = mnemonicLength === 12 ? 24 : 12;
     setMnemonicLength(newLength);
     setMnemonicWords(Array(newLength).fill(""));
+    setError(null);
+  };
+
+  const validate = (words) => {
+    console.log(words);
+
+    const mnemonic_ = words.join(" ").trim();
+    const isValid = Mnemonic.isValidMnemonic(mnemonic_);
+    console.log(mnemonic_);
+    console.log(isValid);
+
+    if (!isValid) {
+      return false;
+    }
+    return true;
   };
 
   const handleInputChange = (index, value) => {
     const newMnemonicWords = [...mnemonicWords];
     newMnemonicWords[index] = value;
     setMnemonicWords(newMnemonicWords);
+    setError(null);
   };
 
   const handlePaste = (e) => {
-    e.preventDefault(); // Prevent default paste behavior
-    const pastedText = e.clipboardData.getData("text");
-    const words = pastedText.split(" ").slice(0, mnemonicLength);
+    e.preventDefault();
+    const pastedText = e.clipboardData.getData("text").trim();
+    const words = pastedText.split(/\s+/).slice(0, mnemonicLength);
 
     if (words.length === mnemonicLength) {
       setMnemonicWords(words);
       setLastPaste(words);
+      setError(null);
+    } else {
+      setError(`Пожалуйста, вставьте ровно ${mnemonicLength} слов.`);
     }
   };
 
   const handleKeyDown = (e) => {
     if (e.ctrlKey && e.key === "z") {
-      e.preventDefault(); // Prevent default "Ctrl + Z" behavior
+      e.preventDefault();
       if (lastPaste) {
         setMnemonicWords(Array(mnemonicLength).fill(""));
         setLastPaste(null);
+        setError(null);
       }
     }
   };
 
   const handleImport = async () => {
-    const data = { mnemonic: mnemonicWords };
+    const isValidMnemonic = validate(mnemonicWords);
 
+    if (!isValidMnemonic) {
+      setError("Mnemonic phrase is invalid! Please try again");
+      return;
+    }
+
+    const data = { mnemonic: mnemonicWords };
     try {
       const response = await fetch("http://localhost:8000/import_wallet/", {
         method: "POST",
@@ -56,26 +84,27 @@ export default function Mnemonic() {
       const result = await response.json();
 
       if (response.ok) {
-        // Save wallet data to localStorage
         localStorage.setItem("walletData", JSON.stringify(result));
-        
-        // Navigate to wallet info page
         navigate("/wallet-info");
       } else {
-        console.error("Error importing wallet:", result.detail);
-        // You can also set an error state to display to the user
+        const errorMessage =
+          typeof result.detail === "string"
+            ? result.detail
+            : "Error getting your wallet. It's apparently troubles with the internet";
+        setError(errorMessage);
       }
     } catch (error) {
-      console.error("Error importing wallet:", error);
-      // Handle the error, maybe set an error state to inform the user
+      setError(
+        "Error getting your wallet. It's apparently troubles with the internet"
+      );
     }
   };
 
   return (
-    <div className="container">
-      <h3>Import with Mnemonic Phrase</h3>
+    <div className="mnemo-container">
+      <h3>Import with Mnemonic phrase</h3>
       <div className="switch-container">
-        <span className="switch-label">12 words</span>
+        <span className="switch-label">12</span>
         <label className="switch">
           <input
             type="checkbox"
@@ -84,7 +113,7 @@ export default function Mnemonic() {
           />
           <span className="slider"></span>
         </label>
-        <span className="switch-label">24 words</span>
+        <span className="switch-label">24</span>
       </div>
 
       <form onSubmit={(e) => e.preventDefault()} onKeyDown={handleKeyDown}>
@@ -101,8 +130,10 @@ export default function Mnemonic() {
             />
           ))}
         </div>
-
-        <button className="button" onClick={handleImport}>Import wallet</button>
+        {error && <p className="error-message">{error}</p>}
+        <button className="button" onClick={handleImport}>
+          Import Wallet
+        </button>
       </form>
     </div>
   );

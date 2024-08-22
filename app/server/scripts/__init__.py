@@ -4,4 +4,6 @@ from .importwallet import import_wallet, SImportWallet
 
 __all__ = [
     'create_wallet',
+    "import_wallet",
+    'SImportWallet'
 ]
