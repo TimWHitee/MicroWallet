@@ -1,7 +1,7 @@
 import sys
 import os
 import unittest
-
+from app.server.auxiliary import *
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 from app.server.scripts import *
 
