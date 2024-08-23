@@ -5,8 +5,8 @@ from typing import List
 import sys,os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 
-from .auxiliary import EthClient
-from .scripts import create_wallet, SImportWallet, import_wallet
+from auxiliary import EthClient
+from scripts import create_wallet, SImportWallet, import_wallet
 import json
 
 app = FastAPI()
@@ -41,12 +41,9 @@ class BalanceResponse(BaseModel):
 
 class ImportWalletResponse(BaseModel):
     address : str
-<<<<<<< HEAD
     private_key: tuple
     transactions : List[str]
-=======
     private_key: str
->>>>>>> e506ab2b173d4dc5e922323c8cd0190756ec55f9
 
 class Token(BaseModel):
     name: str
@@ -81,21 +78,11 @@ async def start():
 def import_wallet_p(data: SImportWallet):
 
     result = import_wallet(data)
-<<<<<<< HEAD
-    print(result)
-    a = str('0x'+result[0]["private_key"]),
-=======
 
->>>>>>> e506ab2b173d4dc5e922323c8cd0190756ec55f9
     return ImportWalletResponse(
-
         address=result[0]["address"],
-<<<<<<< HEAD
-        private_key = a,
-        transactions=result[0]["transactions"]
-=======
+        transactions=result[0]["transactions"],
         private_key=f"{result[0]["private_key"]}",
->>>>>>> e506ab2b173d4dc5e922323c8cd0190756ec55f9
     )
             
 

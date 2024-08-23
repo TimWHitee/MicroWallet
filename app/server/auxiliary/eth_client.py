@@ -72,18 +72,15 @@ class EthClient:
         :param num_transactions: нужной для получения количество транзакций
         :return: список транзакций
         '''
-<<<<<<< HEAD
         b = os.environ.get("ETHERSCAN")
         url = f"https://api.etherscan.io/api?module=account&action=txlist&address={self.address}&sort=desc&apikey={b}"
     
         response = requests.get(url)
         data = response.json()
-=======
         url = f"https://api.etherscan.io/api?module=account&action=txlist&address={self.address}&sort=desc&apikey={os.environ.get('ETHERSCAN')}"
         response = requests.get(url).json()
         if response['status'] != "1":
             return {"transactions": [], "totalTransactions": 0}
->>>>>>> e506ab2b173d4dc5e922323c8cd0190756ec55f9
 
         # Get transactions and total count
         result = response['result']

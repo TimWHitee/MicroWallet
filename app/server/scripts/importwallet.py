@@ -5,7 +5,7 @@ from eth_keys import keys
 from eth_utils import to_checksum_address
 
 
-from ..auxiliary import EthClient, to_seed
+from auxiliary import EthClient, to_seed
 from mnemonic import Mnemonic
 
 
