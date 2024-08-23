@@ -48,7 +48,9 @@ class EthClient:
             }
         }
 
-        with open('app/utils/tokens.json') as file:
+        TOKENS_JSON_PATH = os.path.join(os.path.dirname(__file__), '..', '..','utils', 'tokens.json')
+
+        with open(TOKENS_JSON_PATH) as file:
             token_contracts = json.load(file)
 
         # Получение балансов токенов
