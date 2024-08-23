@@ -48,7 +48,7 @@ export default function Mnemonic_() {
       setLastPaste(words);
       setError(null);
     } else {
-      setError(`Пожалуйста, вставьте ровно ${mnemonicLength} слов.`);
+      setError(`Pleas, paste exactly ${mnemonicLength} words.`);
     }
   };
 
