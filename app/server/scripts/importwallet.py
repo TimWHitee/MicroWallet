@@ -26,7 +26,7 @@ class SImportWallet(BaseModel):
         return values
 
     @field_validator("mnemonic")
-    def validate_mnemonic(cls, mnemonic):
+    def validate_mnemonic(cls, mnemonic: list):
         if len(mnemonic) not in (12, 24):
             raise ValidationError("Wrong list length!")
         return mnemonic
@@ -95,16 +95,12 @@ def import_wallet(data: SImportWallet, num_wallets: int = 1):
                     net_url=data.net_url,
                 )
 
-                # Получение истории транзакций
-                transactions = client.get_transactions(
-                    num_transactions=10
-                )
+       
 
                 # Сохраняем результаты в список
                 result.append({
                     "address": address,
                     "private_key": private_key,
-                    "transactions" : transactions
                 })
 
                 return result

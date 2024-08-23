@@ -65,30 +65,24 @@ class EthClient:
         return balance
 
 
-    def get_transactions(self, num_transactions: int =  10) -> list:
+    def get_transactions(self, start_index: int = 0) -> list:
         '''
         Получение последних n транзакций кошелька
 
         :param num_transactions: нужной для получения количество транзакций
         :return: список транзакций
         '''
-        url = f"https://api.etherscan.io/api?module=account&action=txlist&address={self.address}&sort=desc&apikey={os.environ.get("ETHERSCAN")}"
-    
-        response = requests.get(url)
-        data = response.json()
+        url = f"https://api.etherscan.io/api?module=account&action=txlist&address={self.address}&sort=desc&apikey={os.environ.get('ETHERSCAN')}"
+        response = requests.get(url).json()
+        if response['status'] != "1":
+            return {"transactions": [], "totalTransactions": 0}
 
-        if data['status'] != "1":
-            return ["No transactions found"]
-
-        # Получаем последние n транзакций
-        result = data['result'][:num_transactions]
+        # Get transactions and total count
+        result = response['result']
+        total_transactions = len(result)
+        transactions = [tx["hash"] for tx in result[start_index:start_index + 3]]
         
-        transactions = []
-
-        for i in result:
-            transactions.append(i["hash"])
-
-        return transactions
+        return {"transactions": transactions, "totalTransactions": total_transactions}
     
 
     def sign_transaction(

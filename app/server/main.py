@@ -42,7 +42,6 @@ class BalanceResponse(BaseModel):
 class ImportWalletResponse(BaseModel):
     address : str
     private_key: str
-    transactions : List[str]
 
 class Token(BaseModel):
     name: str
@@ -52,7 +51,7 @@ class Token(BaseModel):
 async def create_wallet_endpoint(words_in_mnemo: int = 24):
     try:
         wallet_data = create_wallet(words_in_mnemo)
-        return wallet_data
+        return wallet_data 
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     
@@ -78,19 +77,23 @@ def import_wallet_p(data: SImportWallet):
 
     result = import_wallet(data)
 
-
     return ImportWalletResponse(
         address=result[0]["address"],
-        private_key=f"{result[0]["private_key"]}".removeprefix("0x"),
-        transactions=result[0]["transactions"]
+        private_key=f"{result[0]["private_key"]}",
     )
             
 
+@app.get("/transactions/{address}&{index}")
+async def get_transactions(address: str, index: int):
+    
+    client = EthClient(address=address, rpc_url="https://cloudflare-eth.com", net_url="https://sepolia.infura.io/v3/843f611c200e4fb9ac1ba55a6978074e")
+    transactions = client.get_transactions(start_index=index)
+    print(transactions)
+    # if not transactions:
+    #     raise HTTPException(status_code=404, detail="No transactions found")
+    return transactions #This is a list of transactions. Its not an object or smth
 
-@app.post("/transactions")
-def get_transactions(address: str):
-    # TODO: Настроить пагинацию (оффсет) 
-    return EthClient(address=address).get_transactions()
+
 
 @app.get("/get-tokens/", response_model=list[Token])
 async def get_tokens():
