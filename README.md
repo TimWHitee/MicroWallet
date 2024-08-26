@@ -1,16 +1,17 @@
-[![Badge](https://github.com/TimWHitee/MicroWallet/actions/workflows/python_tests.yml/badge.svg)](https://github.com/TimWHitee/MicroWallet/actions/workflows/python_tests.yml)
-# Crypto wallet non-educational project
+# Microwallet - PET-Project
 
+## How to launch:
 
-## How to run
-``` 
-uvicorn app.server.main:app --reload
-```
+### To launch the backend
 
 ```
-cd app/client
+uvicorn main:app --reload
 ```
 
+### To launch the frontend
+
 ```
-npm start
+cd frontend
+npm install
+npm run dev
 ```
