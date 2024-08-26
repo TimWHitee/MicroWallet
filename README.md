@@ -1,4 +1,4 @@
-# Microwallet - PET-Project
+# Microwallet - The only wallet you need
 
 ## How to launch:
 
