@@ -76,6 +76,11 @@
   margin-left: 10px;
 }
 
+.tokens-info li{
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
+  text-align: auto;
+}
+
 /* Стиль для кнопки */
 .toggle-button {
   display: block;
@@ -181,6 +186,33 @@
   text-align: center; /* Центрируем текст */
 }
 
+
+.add-token-button {
+
+  display: block;
+  margin: 20px auto; /* Центрируем кнопки */
+  padding: 10px 20px; /* Увеличиваем отступы внутри кнопок */
+  font-size: 1em; /* Размер шрифта кнопок */
+  color: #fff; /* Белый цвет текста */
+  background-color: #007bff; /* Синий цвет фона */
+  border: none;
+  border-radius: 8px; /* Скругление углов кнопок */
+  cursor: pointer; /* Указатель при наведении */
+  transition: background-color 0.3s; /* Плавный переход изменения фона */
+}
+
+.save-token-button {
+  display: block;
+  margin: 10px auto; /* Центрируем кнопки */
+  padding: 10px 20px;
+  font-size: 1em; /* Размер шрифта кнопок */
+  color: #fff; /* Белый цвет текста */
+  background-color: #007bff; /* Синий цвет фона */
+  border: none;
+  border-radius: 8px; /* Скругление углов кнопок */
+  cursor: pointer; /* Указатель при наведении */
+  transition: background-color 0.3s; /* Плавный переход изменения фона */
+}
 .TransactionsContainer {
   position: relative;
   margin-top: 30px;

@@ -269,7 +269,7 @@ const CheckBalance = ({ address }) => {
               setNewToken({ ...newToken, address: e.target.value })
             }
           />
-          <button onClick={handleAddToken}>Save Token</button>
+          <button class='save-token-button' onClick={handleAddToken}>Save Token</button>
         </div>
       )}
     </div>
