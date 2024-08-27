@@ -76,7 +76,7 @@
   margin-left: 10px;
 }
 
-.tokens-info li{
+.tokens-info li {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Шрифт */
   text-align: auto;
 }
@@ -186,9 +186,7 @@
   text-align: center; /* Центрируем текст */
 }
 
-
 .add-token-button {
-
   display: block;
   margin: 20px auto; /* Центрируем кнопки */
   padding: 10px 20px; /* Увеличиваем отступы внутри кнопок */
@@ -283,3 +281,38 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   position: relative;
 }
+
+.send-transaction {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: absolute;
+  top: 500px;
+  left: 37px;
+}
+
+.send-transaction label{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.send-transaction h2 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.send-transaction button {
+  display: block;
+  margin: 10px auto; /* Центрируем кнопки */
+  padding: 10px 20px;
+  font-size: 1em; /* Размер шрифта кнопок */
+  color: #fff; /* Белый цвет текста */
+  background-color: #007bff; /* Синий цвет фона */
+  border: none;
+  border-radius: 8px; /* Скругление углов кнопок */
+  cursor: pointer; /* Указатель при наведении */
+  transition: background-color 0.3s; /* Плавный переход изменения фона */
+}
+
