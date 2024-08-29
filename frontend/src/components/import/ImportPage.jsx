@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./ImportPage.css";
+import "../styles/ImportPage.css";
 
 export default function Registration() {
   const navigate = useNavigate();

@@ -2,7 +2,6 @@ from .api import (
     create_router,
     import_router,
     token_router,
-    transactions_router,
     balance_router
 )
 
@@ -23,7 +22,6 @@ __all__ = [
     "create_router",
     "import_router",
     "token_router",
-    "transactions_router",
     "balance_router",
     "generate_entropy",
     "generate_mnemonic_24",

@@ -6,6 +6,7 @@
 }
 
 /* Стили для WalletInfo */
+.send-transaction,
 .wallet-info,
 .TransactionsContainer {
   background-color: #ffffff;
@@ -211,6 +212,7 @@
   cursor: pointer; /* Указатель при наведении */
   transition: background-color 0.3s; /* Плавный переход изменения фона */
 }
+
 .TransactionsContainer {
   position: relative;
   margin-top: 30px;
@@ -293,7 +295,7 @@
   right: 50px;
 }
 
-.send-transaction label{
+.send-transaction label {
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -316,4 +318,3 @@
   cursor: pointer; /* Указатель при наведении */
   transition: background-color 0.3s; /* Плавный переход изменения фона */
 }
-
