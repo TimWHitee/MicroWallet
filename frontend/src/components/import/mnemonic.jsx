@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Mnemonic.css";
+import "../styles/Mnemonic.css";
 import { Mnemonic } from "ethers";
 
 export default function Mnemonic_() {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Private.css";
+import "../styles/Private.css";
 
 export default function PrivateKeyImport() {
   const [privateKey, setPrivateKey] = useState("");

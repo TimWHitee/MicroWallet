@@ -2,7 +2,6 @@ from backend import (
     create_router,
     import_router,
     token_router,
-    transactions_router,
     balance_router
 )
 from fastapi import FastAPI
@@ -27,7 +26,6 @@ app.add_middleware(
 app.include_router(create_router)
 app.include_router(import_router)
 app.include_router(token_router)
-app.include_router(transactions_router)
 app.include_router(balance_router)
 
 

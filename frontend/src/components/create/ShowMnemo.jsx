@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./ShowMnemo.css";
-import { useWallet } from "../WalletContext";
+import "../styles/ShowMnemo.css";
+import { useWallet } from "../../WalletContext";
 import { saveAs } from "file-saver"; // You might need to install the 'file-saver' package
 import { useNavigate } from "react-router-dom";
 
@@ -107,10 +107,7 @@ function ShowMnemo() {
                   ))}
                 </ul>
               </div>
-              <button onClick={handleReady}>Ready!</button>
-              <button className="dev-button" onClick={handleSkip}>
-                Skip (only dev mode)
-              </button>{" "}
+              <button onClick={handleReady}>Ready!</button>{" "}
               {/* dev skip button */}
               <button className="download-button" onClick={handleDownload}>
                 <img
