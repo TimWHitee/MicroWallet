@@ -284,25 +284,6 @@
   position: relative;
 }
 
-<<<<<<< HEAD:frontend/src/components/WalletInfo.css
-.send-transaction {
-  background-color: #ffffff;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  position: absolute;
-  top: 500px;
-  right: 50px;
-}
-
-.send-transaction label {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-=======
->>>>>>> cc5d1e162c571e5322b533ebdad9a366a9a55b9e:frontend/src/components/styles/WalletInfo.css
 .send-transaction h2 {
   text-align: center;
   margin-top: 10px;
