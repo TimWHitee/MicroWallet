@@ -290,7 +290,7 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   position: absolute;
   top: 500px;
-  left: 37px;
+  right: 50px;
 }
 
 .send-transaction label{
@@ -307,6 +307,7 @@
   display: block;
   margin: 10px auto; /* Центрируем кнопки */
   padding: 10px 20px;
+  left: 1000px;
   font-size: 1em; /* Размер шрифта кнопок */
   color: #fff; /* Белый цвет текста */
   background-color: #007bff; /* Синий цвет фона */

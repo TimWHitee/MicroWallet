@@ -3,10 +3,10 @@ import "./WalletInfo.css";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy, faCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
-import QRCode from "qrcode.react"; 
+import QRCode from "qrcode.react";
 import Web3 from "web3";
 
-const rpcUrl = "https://rpc2.sepolia.org";
+const rpcUrl = "https://cloudflare-eth.com";
 const web3 = new Web3(new Web3.providers.HttpProvider(rpcUrl));
 
 const TransactionsInfo = ({ walletData }) => {
@@ -273,7 +273,9 @@ const CheckBalance = ({ address }) => {
               setNewToken({ ...newToken, address: e.target.value })
             }
           />
-          <button class='save-token-button' onClick={handleAddToken}>Save Token</button>
+          <button class="save-token-button" onClick={handleAddToken}>
+            Save Token
+          </button>
         </div>
       )}
     </div>
@@ -303,7 +305,10 @@ const SendTransaction = ({ privateKey }) => {
     setError(null);
     try {
       const weiAmount = web3.utils.toWei(amount, "ether");
-      const nonce = await web3.eth.getTransactionCount(walletData.address, "latest");
+      const nonce = await web3.eth.getTransactionCount(
+        walletData.address,
+        "latest"
+      );
       const gasPriceGwei = await get_gas();
       console.log("Gas price in Gwei:", gasPriceGwei);
 
@@ -315,17 +320,23 @@ const SendTransaction = ({ privateKey }) => {
         to: toAddress,
         value: weiAmount,
         gas: 21000,
-        gasPrice: gasPriceWei, // Используем цену газа в Wei
+        gasPrice: 3000000000, // Используем цену газа в Wei
         nonce: nonce,
-        chainId: 11155111, // ID сети Sepolia
+        chainId: 1, // ID сети Sepolia
       };
 
-      const signedTransaction = await web3.eth.accounts.signTransaction(transaction, privateKey);
-      const receipt = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
+      const signedTransaction = await web3.eth.accounts.signTransaction(
+        transaction,
+        privateKey
+      );
+      const receipt = await web3.eth.sendSignedTransaction(
+        signedTransaction.rawTransaction
+      );
 
       setTxHash(receipt.transactionHash);
       console.log("Transaction successful with hash:", receipt.transactionHash);
     } catch (error) {
+      console.log(error);
       setError("Error sending transaction: " + error.message);
       console.error("Error sending transaction:", error);
     } finally {
@@ -366,7 +377,18 @@ const SendTransaction = ({ privateKey }) => {
         <button type="submit" disabled={isSending}>
           {isSending ? "Sending..." : "Send"}
         </button>
-        {txHash && <p>Transaction Hash: <a href={`https://sepolia.etherscan.io/tx/${txHash}`} target="_blank" rel="noopener noreferrer">{(a => `${a.slice(0, 5)}...${a.slice(-5)}`)(txHash)}</a></p>}
+        {txHash && (
+          <p>
+            Transaction Hash:{" "}
+            <a
+              href={`https://sepolia.etherscan.io/tx/${txHash}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {((a) => `${a.slice(0, 5)}...${a.slice(-5)}`)(txHash)}
+            </a>
+          </p>
+        )}
         {error && <p className="error">{error}</p>}
       </form>
     </div>
@@ -400,6 +422,5 @@ const App = () => {
     </div>
   );
 };
-
 
 export default App;
