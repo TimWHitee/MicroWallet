@@ -284,6 +284,7 @@
   position: relative;
 }
 
+<<<<<<< HEAD:frontend/src/components/WalletInfo.css
 .send-transaction {
   background-color: #ffffff;
   border-radius: 16px;
@@ -300,6 +301,8 @@
   margin-right: 10px;
 }
 
+=======
+>>>>>>> cc5d1e162c571e5322b533ebdad9a366a9a55b9e:frontend/src/components/styles/WalletInfo.css
 .send-transaction h2 {
   text-align: center;
   margin-top: 10px;
