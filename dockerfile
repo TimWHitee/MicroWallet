@@ -15,3 +15,5 @@ COPY . .
 
 # Запускаем сервер
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+LABEL name="sashajlohsky/micro_wallet_backend"

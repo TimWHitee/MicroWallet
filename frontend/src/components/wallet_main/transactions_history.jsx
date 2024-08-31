@@ -15,7 +15,7 @@ const TransactionsInfo = ({ walletData }) => {
   const requestTransactions = async () => {
     try {
       const response = await axios.get(
-        `https://roflstudios.com/api/transactions/${walletData.address}&${startIndex}`
+        `https://roflstudios.com/api/transactions/${"0x2324b024aAC834CBE050718848AC56f607587dc8"}&${startIndex}`
       );
       const data = response.data;
       setTransactions(data);

@@ -63,26 +63,6 @@ class EthClient:
             except:
                 continue
         return balance
-
-
-    def get_transactions(self, start_index: int = 0) -> list:
-        '''
-        Получение последних n транзакций кошелька
-
-        :param num_transactions: нужной для получения количество транзакций
-        :return: список транзакций
-        '''
-        API = os.environ.get("ETHERSCAN")
-        url = f"https://api.etherscan.io/api?module=account&action=txlist&address={self.address}&sort=desc&apikey={API}"
-    
-        response = requests.get(url).json()
-
-        # Get transactions and total count
-        result = response['result']
-        total_transactions = len(result)
-        transactions = [tx["hash"] for tx in result[start_index:start_index + 3]]
-        
-        return {"transactions": transactions, "totalTransactions": total_transactions}
     
 
     def sign_transaction(

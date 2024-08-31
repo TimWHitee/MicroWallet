@@ -39,16 +39,8 @@ def import_wallet_func(data: SImportWallet, num_wallets: int = 1):
 
                 # Получение адреса и приватного ключа
                 address = bip44_acc.PublicKey().ToAddress()
+                print(address)
                 private_key = bip44_acc.PrivateKey().Raw().ToHex()
-
-                # Инициализация клиента
-                client = EthClient(
-                    address=address,
-                    rpc_url=data.rpc_url,
-                    net_url=data.net_url,
-                )
-
-       
 
                 # Сохраняем результаты в список
                 result.append({
@@ -64,17 +56,11 @@ def import_wallet_func(data: SImportWallet, num_wallets: int = 1):
 
         address = public_key.to_address()
         checksum_address = to_checksum_address(address)
-
-        client = EthClient(
-            address=checksum_address,
-            rpc_url=data.rpc_url,
-            net_url=data.net_url,
-        )
+        print(checksum_address)
 
         result = [{
             "address": checksum_address,
             "private_key": private_key,
-            "transactions" : client.get_transactions()
         }]
         
         return result

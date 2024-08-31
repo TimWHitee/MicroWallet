@@ -6,6 +6,7 @@ import TransactionsInfo from "./transactions_history.jsx";
 import WalletInfo from "./wallet_info.jsx";
 import CheckBalance from "./balance.jsx";
 import SendTransaction from "./send_transactions.jsx";
+import getGasPrice from "./gas_price.jsx";
 
 const Wallet = () => {
   const [walletData, setWalletData] = useState(null);
@@ -25,12 +26,7 @@ const Wallet = () => {
       </div>
       {walletData && <CheckBalance address={walletData.address} />}
       {walletData && <SendTransaction privateKey={walletData.private_key} />}
-      <div className="qr-code-container">
-        {walletData && (
-          <QRCode className="QR" value={walletData.address} size={256} />
-        )}
-        <p>Address QR</p>
-      </div>
+      {getGasPrice()}
     </div>
   );
 };

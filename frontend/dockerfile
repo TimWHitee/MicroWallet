@@ -24,3 +24,5 @@ EXPOSE 5173
 
 # Command to run the web server
 CMD ["serve", "-s", "dist", "-l", "5173"]
+
+LABEL name="sashajlohsky/micro_wallet_frontend"
