@@ -103,7 +103,7 @@ const SendTransaction = ({ privateKey }) => {
           <p>
             Transaction Hash:{" "}
             <a
-              href={`https://sepolia.etherscan.io/tx/${txHash}`}
+              href={`https://etherscan.io/tx/${txHash}`}
               target="_blank"
               rel="noopener noreferrer"
             >
